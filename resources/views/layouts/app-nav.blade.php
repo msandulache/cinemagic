@@ -71,11 +71,11 @@
                         @guest()
                                 <div class="ml-6 mb-4 hidden md:inline-block">
                                     <a class="group mr-4 inline-flex items-center text-sm bg-indigo-400 px-3 py-1 rounded" href="{{ route('login') }}">
-                                        <span class="text-white group-hover:text-purple-200">Login</span>
+                                        <span class="text-white group-hover:text-purple-200">Intra in cont</span>
                                     </a>
 
                                     <a class="group inline-flex items-center text-sm bg-indigo-400 px-3 py-1 rounded" href="{{ route('register') }}">
-                                        <span class="text-white group-hover:text-purple-200">Register</span>
+                                        <span class="text-white group-hover:text-purple-200">Cont nou</span>
                                     </a>
                                 </div>
                         @endguest
@@ -150,7 +150,7 @@
                         <div class="hidden md:flex items-center px-6 py-1 border border-coolGray-200 rounded-full">
                             <input
                                 class="h-12 bg-transparent border-0 text-sm text-coolGray-500 placeholder-coolGray-500 outline-none"
-                                type="text" placeholder="Cauta..." name="df" id="" fdprocessedid="r64j0t">
+                                type="text" placeholder="Cauta dupa film sau actor..." name="df" id="" fdprocessedid="r64j0t">
                             <button class="inline-block text-coolGray-400 hover:text-rhino-500" type="submit"
                                     fdprocessedid="wjxkw">
                                 <svg width="14" height="14" viewbox="0 0 14 14" fill="none"

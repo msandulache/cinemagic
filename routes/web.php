@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
-    $movies = Movie::all();
+    $movies = Movie::all()->take(9);
 
     return view('welcome', ['movies' => $movies]);
 })->name('app.index');

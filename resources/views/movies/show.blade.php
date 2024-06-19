@@ -22,7 +22,7 @@
             </div>
         </section>
 
-        <section class="py-12 md:py-24 lg:py-32">
+        <section class="py-12 md:py-24 lg:py-16">
             <div class="container px-4 mx-auto">
                 <div class="max-w-lg mx-auto lg:max-w-6xl">
                     <div class="flex flex-wrap mb-8 -mx-4">
@@ -85,9 +85,9 @@
                                             </svg>
                                         </div>
                                     </div>
-                                    <p class="text-xs uppercase text-rhino-400 font-bold">based on {{ $movie['vote_count'] }} reviews</p>
+                                    <p class="text-xs uppercase text-rhino-400 font-bold">bazat pe {{ $movie['vote_count'] }} voturi</p>
                                 </div>
-                                <p class="text-sm text-rhino-500 mb-6">Pariatur ex aliqua elit ut enim consequat amet non do ut. Ad aute deserunt fugiat qui Lorem in quis velit labore voluptate.</p>
+                                <p class="text-sm text-rhino-500 mb-6">{{ $movie['overview'] }}</p>
                                 <div class="mb-10 border border-coolGray-200 rounded-sm">
                                     <div class="py-3 px-6 border-b border-coolGray-200 flex items-center flex-wrap justify-between gap-4">
                                         <p class="uppercase text-rhino-500 font-bold text-xs tracking-widest">Specification</p>
@@ -107,8 +107,8 @@
                                     </div>
                                 </div>
                                 <div class="flex gap-4 mb-6">
-                                    <h2 class="text-4xl font-semibold text-rhino-700">$ 199.00</h2>
-                                    <p class="text-rhino-300 font-extrabold text-sm">$ 249.00</p>
+                                    <h2 class="text-4xl font-semibold text-rhino-700">19.90 Lei</h2>
+                                    <p class="text-rhino-300 font-extrabold text-sm">24.90 Lei</p>
                                 </div>
                                 <div class="flex -mx-2 flex-wrap mb-10">
                                     <div class="w-full xs:w-4/12 md:w-3/12 px-2 mb-4 xs:mb-0">
@@ -138,70 +138,8 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="flex items-center justify-between gap-4 flex-wrap">
-                                    <div class="flex items-center gap-8">
-                                        <a class="group" href="#">
-                                            <div class="flex items-center gap-2">
-                                                <div class="text-rhino-500 group-hover:text-rhino-600 transition duration-200">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 16 16" fill="none">
-                                                        <g clip-path="url(#clip0_2011_4383)">
-                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8 2C4.68629 2 2 4.68629 2 8C2 11.3137 4.68629 14 8 14C11.3137 14 14 11.3137 14 8C14 4.68629 11.3137 2 8 2ZM0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8ZM7 5C7 4.44772 7.44772 4 8 4C8.55229 4 9 4.44772 9 5V8C9 8.55229 8.55229 9 8 9C7.44772 9 7 8.55229 7 8V5ZM8 12C8.55229 12 9 11.5523 9 11C9 10.4477 8.55229 10 8 10C7.44772 10 7 10.4477 7 11C7 11.5523 7.44772 12 8 12Z" fill="currentColor"></path>
-                                                        </g>
-                                                        <defs><clippath id="clip0_2011_4383"><rect width="16" height="16" fill="white"></rect></clippath></defs>
-                                                    </svg>
-                                                </div>
-                                                <span class="uppercase text-rhino-500 group-hover:text-rhino-600 transition duration-200 text-xs font-bold">Size guide</span>
-                                            </div>
-                                        </a>
-                                        <a class="group" href="#">
-                                            <div class="flex items-center gap-2">
-                                                <div class="text-rhino-500 group-hover:text-rhino-600 transition duration-200">
-                                                    <div>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 16 16" fill="none">
-                                                            <path d="M14.9341 7.34892L9.93691 2.27517C9.66887 2.00713 9.28598 1.93061 8.94128 2.06456C8.59671 2.19865 8.36686 2.54321 8.36686 2.90703V4.99393C5.82041 5.14712 3.84835 5.95124 2.35495 7.44464C0.0191119 9.79959 0 12.9396 0 13.0736C0 13.4948 0.287138 13.8394 0.670185 13.9544C0.746712 13.9735 0.823372 13.9927 0.899898 13.9927C1.22537 13.9927 1.53172 13.8205 1.68493 13.5332C3.02513 11.1399 6.73952 10.9484 8.36695 10.9868V13.0929C8.36695 13.4567 8.59666 13.7822 8.94137 13.9354C9.28593 14.0695 9.68807 13.9928 9.93701 13.7248L14.9342 8.65102C15.2786 8.28707 15.2786 7.71268 14.934 7.34887L14.9341 7.34892ZM9.38167 9.2061C9.28591 9.187 8.78817 9.14867 8.04147 9.14867C6.50974 9.14867 4.32711 9.35929 2.50822 10.3357C2.81459 9.72295 3.17841 9.18686 3.63781 8.72745C4.92061 7.44466 6.81612 6.77464 9.28594 6.77464C9.78371 6.77464 10.1858 6.37251 10.1858 5.87477V5.12807L13.0003 8L10.1858 10.8719V10.1252C10.1858 9.64657 9.84125 9.26354 9.38167 9.2061Z" fill="currentColor"></path>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                                <span class="uppercase text-rhino-500 group-hover:text-rhino-600 transition duration-200 text-xs font-bold">Share</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <a class="group" href="#">
-                                        <div class="flex items-center gap-2">
-                                            <div class="text-rhino-500 group-hover:text-rhino-600 transition duration-200">
-                                                <div>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 16 16" fill="none">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M5 3V6H11V3H5ZM3 2V6H1C0.447715 6 0 6.44772 0 7V12C0 14.2091 1.79086 16 4 16H12C14.2091 16 16 14.2091 16 12V7C16 6.44772 15.5523 6 15 6H13V2C13 1.44772 12.5523 1 12 1H4C3.44772 1 3 1.44772 3 2ZM4 8H12H14V12C14 13.1046 13.1046 14 12 14H4C2.89543 14 2 13.1046 2 12V8H4ZM5 10C4.44772 10 4 10.4477 4 11C4 11.5523 4.44772 12 5 12H11C11.5523 12 12 11.5523 12 11C12 10.4477 11.5523 10 11 10H5Z" fill="currentColor"></path>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <span class="uppercase text-rhino-500 group-hover:text-rhino-600 transition duration-200 text-xs font-bold">Ask for product</span>
-                                        </div>
-                                    </a>
-                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="flex flex-wrap w-full mb-8">
-                        <a class="group" href="#">
-                            <p class="whitespace-nowrap block mb-4 text-sm text-rhino-700 px-4 pt-4 font-bold group-hover:text-rhino-700 transition duration-200">Description</p>
-                            <div class="w-full h-px bg-purple-500 group-hover:bg-purple-500 transition duration-200"></div>
-                        </a>
-                        <a class="group" href="#">
-                            <p class="whitespace-nowrap block mb-4 text-sm text-rhino-300 px-4 pt-4 font-bold group-hover:text-rhino-700 transition duration-200">Customer Reviews</p>
-                            <div class="w-full h-px bg-rhino-200 group-hover:bg-purple-500 transition duration-200"></div>
-                        </a>
-                        <a class="group" href="#">
-                            <p class="whitespace-nowrap block mb-4 text-sm text-rhino-300 px-4 pt-4 font-bold group-hover:text-rhino-700 transition duration-200">Shipping &amp; Returns</p>
-                            <div class="w-full h-px bg-rhino-200 group-hover:bg-purple-500 transition duration-200"></div>
-                        </a>
-                        <div class="flex-1">
-                            <div class="w-full h-full border-b border-rhino-200"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <h2 class="text-rhino-500 font-bold mb-4">Lorem ipsum dolor sit amet</h2>
-                        <p class="text-rhino-500 leading-7">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                     </div>
                 </div>
             </div>

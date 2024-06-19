@@ -4,7 +4,7 @@
         <div class="container px-4 mx-auto">
             <div class="max-w-xl mx-auto lg:max-w-none pt-18 pb-3 relative z-50">
                 <div class="flex flex-wrap items-center -mx-4">
-                    <div class="relative w-full lg:w-1/2 px-4 mb-12">
+                    <div class="relative w-full lg:w-1/2 px-6 mb-12">
                         <div class="relative">
                             <div class="flex flex-col justify-center items-start">
                                 <h1 class="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-heading text-white font-semibold mb-8">
@@ -20,13 +20,19 @@
                         <div class="relative">
                             <div class="flex flex-wrap -mx-4">
                                 <div class="w-1/3 px-4">
-                                    <img class="block rounded-xl w-full" src="https://image.tmdb.org/t/p/original//yL7MmIaedqk1JlgHs1M1d6aTIE9.jpg" alt="">
+                                    <img class="block rounded-xl w-full"
+                                         src="https://image.tmdb.org/t/p/original//yL7MmIaedqk1JlgHs1M1d6aTIE9.jpg"
+                                         alt="">
                                 </div>
                                 <div class="w-1/3 px-4">
-                                    <img class="block rounded-xl w-full" src="http://image.tmdb.org/t/p/original//nFx9WapSQpDzSbXUHasR4PSYn4T.jpg" alt="">
+                                    <img class="block rounded-xl w-full"
+                                         src="http://image.tmdb.org/t/p/original//nFx9WapSQpDzSbXUHasR4PSYn4T.jpg"
+                                         alt="">
                                 </div>
                                 <div class="w-1/3 px-4">
-                                    <img class="block rounded-xl w-full" src="http://image.tmdb.org/t/p/original//wVlF97CXFtREM3uJqcgYvTzR9ks.jpg" alt="">
+                                    <img class="block rounded-xl w-full"
+                                         src="http://image.tmdb.org/t/p/original//wVlF97CXFtREM3uJqcgYvTzR9ks.jpg"
+                                         alt="">
                                 </div>
                             </div>
                         </div>
@@ -118,32 +124,46 @@
     </section>
 
 
-
-
     <div class="py-6">
         <div class="container px-4 mx-auto">
             <h2 class="text-4xl text-center font-heading font-semibold text-rhino-600 tracking-xs mb-14">Toate
                 filmele</h2>
             <div class="flex flex-wrap">
-                @foreach($movies as $movie)
-                    <div class="w-full lg:w-1/3 p-4">
-                        <div class="px-6 flex items-center justify-center mb-4 rounded-sm hover:opacity-75 cursor-pointer">
-                            <img src="http://image.tmdb.org/t/p/original/{{ $movie['poster_path'] }}" alt="">
-                        </div>
-                        <div class="flex flex-wrap items-center justify-between gap-4">
-                            <div>
-                                <p class="text-rhino-500">
-                                    <a href="/movie/{{ $movie['id'] }}">{{ $movie['title'] }}</a>
-                                </p>
-                                <p class="text-rhino-300 text-sm">$ 65.90</p>
+
+                <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                    @foreach($movies as $movie)
+                        <div class="group">
+                            <div
+                                class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                                <a href="/movie/{{ $movie['id'] }}">
+                                    <img src="http://image.tmdb.org/t/p/original/{{ $movie['poster_path'] }}"
+                                         alt=""
+                                         class=" group-hover:opacity-75">
+                                </a>
                             </div>
-                            <div>
-                                <a class="px-4 py-1 rounded-sm border border-purple-500 text-purple-500 text-sm font-medium hover:bg-purple-500 hover:text-white transition duration-200" href="#">Trailer</a>
-                                <a class="px-4 py-1 rounded-sm border border-purple-500 text-purple-500 text-sm font-medium hover:bg-purple-500 hover:text-white transition duration-200" href="#">Trailer</a>
-                            </div>
+
+                            <a href="/movie/{{ $movie['id'] }}">
+                                <h3 class="mt-4 text-sm text-gray-700">{{ $movie['title'] }}</h3>
+                            </a>
+
+                            @if(!empty($movie['title']))
+                                <button class="js-modal-btn" data-video-id="{{ $movie['title'] }}">
+                                <span class="text-md text-xl font-medium text-indigo-500 hover:text-indigo-300"
+                                      data-tooltip="View trailer" data-tooltip-position="top">
+                                    <i class="fa-brands fa-youtube"></i>
+                                </span>
+                                </button>
+                            @endif
+
+                            <span class="text-md text-xl font-medium text-red-500 hover:text-red-300"
+                                  data-tooltip="Add to wishlist" data-tooltip-position="top">
+                                <i class="fa-regular fa-heart"></i>
+                        </span>
+
                         </div>
-                    </div>
-                @endforeach
+
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
