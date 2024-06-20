@@ -4,13 +4,13 @@
             <div class="container px-4 mx-auto">
                 <div class="py-5">
                     <div class="flex flex-wrap items-center gap-2">
-                        <a class="text-rhino-50 text-sm hover:text-rhino-50 transition duration-200" href="{{ route('app.index') }}">Acasa</a>
+                        <a class="text-rhino-50 text-sm hover:text-rhino-50 transition duration-200" href="{{ route('index') }}">{{ __('Acasa') }}</a>
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
                                 <path d="M15.1211 12C15.1212 12.1313 15.0954 12.2614 15.0451 12.3828C14.9948 12.5041 14.9211 12.6143 14.8281 12.707L10.5859 16.9497C10.3984 17.1372 10.1441 17.2426 9.87889 17.2426C9.6137 17.2426 9.35937 17.1372 9.17186 16.9497C8.98434 16.7622 8.879 16.5079 8.879 16.2427C8.879 15.9775 8.98434 15.7232 9.17186 15.5357L12.707 12L9.17183 8.46437C8.98431 8.27686 8.87897 8.02253 8.87897 7.75734C8.87897 7.49215 8.98431 7.23782 9.17183 7.05031C9.35934 6.86279 9.61367 6.75744 9.87886 6.75744C10.144 6.75744 10.3984 6.86279 10.5859 7.0503L14.8281 11.293C14.9211 11.3857 14.9949 11.4959 15.0451 11.6173C15.0954 11.7386 15.1212 11.8687 15.1211 12Z" fill="#A0A5B8"></path>
                             </svg>
                         </div>
-                        <a class="text-rhino-50 text-sm hover:text-rhino-50 transition duration-200" href="{{ route('movies.index') }}">Filme</a>
+                        <a class="text-rhino-50 text-sm hover:text-rhino-50 transition duration-200" href="{{ route('movies.index') }}">{{ __('Filme') }}</a>
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
                                 <path d="M15.1211 12C15.1212 12.1313 15.0954 12.2614 15.0451 12.3828C14.9948 12.5041 14.9211 12.6143 14.8281 12.707L10.5859 16.9497C10.3984 17.1372 10.1441 17.2426 9.87889 17.2426C9.6137 17.2426 9.35937 17.1372 9.17186 16.9497C8.98434 16.7622 8.879 16.5079 8.879 16.2427C8.879 15.9775 8.98434 15.7232 9.17186 15.5357L12.707 12L9.17183 8.46437C8.98431 8.27686 8.87897 8.02253 8.87897 7.75734C8.87897 7.49215 8.98431 7.23782 9.17183 7.05031C9.35934 6.86279 9.61367 6.75744 9.87886 6.75744C10.144 6.75744 10.3984 6.86279 10.5859 7.0503L14.8281 11.293C14.9211 11.3857 14.9949 11.4959 15.0451 11.6173C15.0954 11.7386 15.1212 11.8687 15.1211 12Z" fill="#A4AFBB"></path>
@@ -87,7 +87,7 @@
                                     </div>
                                     <p class="text-xs uppercase text-rhino-400 font-bold">bazat pe {{ $movie['vote_count'] }} voturi</p>
                                 </div>
-                                <p class="text-sm text-rhino-500 mb-6">{{ $movie['overview'] }}</p>
+                                <p class="text-sm text-rhino-500 mb-6 leading-7">{{ $movie['overview'] }}</p>
                                 <div class="mb-10 border border-coolGray-200 rounded-sm">
                                     <div class="py-3 px-6 border-b border-coolGray-200 flex items-center flex-wrap justify-between gap-4">
                                         <p class="uppercase text-rhino-500 font-bold text-xs tracking-widest">Specification</p>
@@ -111,22 +111,7 @@
                                     <p class="text-rhino-300 font-extrabold text-sm">24.90 Lei</p>
                                 </div>
                                 <div class="flex -mx-2 flex-wrap mb-10">
-                                    <div class="w-full xs:w-4/12 md:w-3/12 px-2 mb-4 xs:mb-0">
-                                        <div class="h-full xs:w-full py-3 px-4 rounded-sm border border-coolGray-200 gap-4 inline-flex items-center justify-between">
-                                            <div class="cursor-pointer text-coolGray-300 hover:text-coolGray-400 transition duration-200">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewbox="0 0 16 17" fill="none">
-                                                    <path d="M12.6667 7.49988H3.33341C3.1566 7.49988 2.98703 7.57012 2.86201 7.69514C2.73699 7.82016 2.66675 7.98973 2.66675 8.16654C2.66675 8.34336 2.73699 8.51292 2.86201 8.63795C2.98703 8.76297 3.1566 8.83321 3.33341 8.83321H12.6667C12.8436 8.83321 13.0131 8.76297 13.1382 8.63795C13.2632 8.51292 13.3334 8.34336 13.3334 8.16654C13.3334 7.98973 13.2632 7.82016 13.1382 7.69514C13.0131 7.57012 12.8436 7.49988 12.6667 7.49988Z" fill="currentColor"></path>
-                                                </svg>
-                                            </div>
-                                            <span class="text-coolGray-700 text-sm">2</span>
-                                            <div class="cursor-pointer text-coolGray-300 hover:text-coolGray-400 transition duration-200">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewbox="0 0 16 17" fill="none">
-                                                    <path d="M12.6667 7.4998H8.66675V3.4998C8.66675 3.32299 8.59651 3.15342 8.47149 3.02839C8.34646 2.90337 8.17689 2.83313 8.00008 2.83313C7.82327 2.83313 7.6537 2.90337 7.52868 3.02839C7.40365 3.15342 7.33341 3.32299 7.33341 3.4998V7.4998H3.33341C3.1566 7.4998 2.98703 7.57003 2.86201 7.69506C2.73699 7.82008 2.66675 7.98965 2.66675 8.16646C2.66675 8.34327 2.73699 8.51284 2.86201 8.63787C2.98703 8.76289 3.1566 8.83313 3.33341 8.83313H7.33341V12.8331C7.33341 13.0099 7.40365 13.1795 7.52868 13.3045C7.6537 13.4296 7.82327 13.4998 8.00008 13.4998C8.17689 13.4998 8.34646 13.4296 8.47149 13.3045C8.59651 13.1795 8.66675 13.0099 8.66675 12.8331V8.83313H12.6667C12.8436 8.83313 13.0131 8.76289 13.1382 8.63787C13.2632 8.51284 13.3334 8.34327 13.3334 8.16646C13.3334 7.98965 13.2632 7.82008 13.1382 7.69506C13.0131 7.57003 12.8436 7.4998 12.6667 7.4998Z" fill="currentColor"></path>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="w-full xs:w-5/12 md:w-7/12 px-2 mb-4 xs:mb-0"><a class="block w-full px-3 py-4 rounded-sm text-center text-white text-sm font-medium bg-purple-500 hover:bg-purple-600 transition duration-200" href="#">Add to cart</a></div>
+                                    <div class="w-full xs:w-5/12 md:w-7/12 px-2 mb-4 xs:mb-0"><a class="block w-full px-3 py-4 rounded-sm text-center text-white text-sm font-medium bg-purple-500 hover:bg-purple-600 transition duration-200" href="#">{{ __('Cumpara bilete') }}</a></div>
                                     <div class="w-full xs:w-3/12 md:w-2/12 px-2">
                                         <a class="border border-purple-600 rounded-sm text-purple-500 py-4 px-6 xs:px-1 inline-flex h-full xs:w-full items-center justify-center hover:bg-purple-500 hover:text-white transition duration-200" href="#">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewbox="0 0 16 17" fill="none">

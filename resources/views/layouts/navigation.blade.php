@@ -226,7 +226,7 @@
 
                 @auth()
                         <li class="mb-3">
-                            <a class="group mr-6 inline-flex items-center text-base" href="{{ route('account.profile') }}">
+                            <a class="group mr-6 inline-flex items-center text-base" href="{{ route('profile.edit') }}">
                               <span class="mr-2 text-purple-400">
                                 <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <path
