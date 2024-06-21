@@ -2,6 +2,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
+    {{ Breadcrumbs::render('login') }}
 
     <section class="overflow-hidden py-12">
         <div class="container mx-auto px-4">

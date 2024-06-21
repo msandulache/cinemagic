@@ -25,10 +25,20 @@
                 </button>
             @endif
 
-            <span class="inline-block py-1 text-xl text-rhino-700 font-bold bg-white uppercase rounded-full tracking-wider"
-                  data-tooltip="Add to wishlist" data-tooltip-position="top">
-                    <i class="fa fa-heart"></i>
-                </span>
+{{--                <span class="inline-block py-1 text-xl text-rhino-700 font-bold bg-white uppercase rounded-full tracking-wider p-2 text-purple-700 hover:text-red-600"--}}
+{{--                  data-tooltip="Add to wishlist" data-tooltip-position="top">--}}
+{{--                    <i class="fa fa-heart"></i>--}}
+{{--                </span>--}}
+
+                @auth()
+                    <form action="{{ route('favorite.add', $movie['id']) }}" class="inline-block" method="POST"
+                          enctype="multipart/form-data">
+                        @csrf
+                        <button type="submit">
+                            <i class="fa fa-heart text-purple-700 hover:text-red-600 text-xl"></i>
+                        </button>
+                    </form>
+                @endauth
 
             <span class="inline-block py-1 text-xl text-rhino-700 font-bold bg-white uppercase rounded-full tracking-wider"
                   data-tooltip="Add to wishlist" data-tooltip-position="top">

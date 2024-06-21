@@ -1,5 +1,7 @@
 <x-app-layout>
 
+    {{ Breadcrumbs::render('register') }}
+
     <section class="overflow-hidden py-12">
         <div class="container mx-auto px-4">
             <div class="bg-purple-100 rounded-lg py-12 px-8 max-w-lg mx-auto">
