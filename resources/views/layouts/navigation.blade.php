@@ -69,14 +69,16 @@
                     @endauth
 
                     @guest()
-                        <div class="ml-6 mb-4 hidden md:inline-block">
-                            <a class="group mr-4 inline-flex items-center text-sm bg-indigo-400 px-3 py-1 rounded" href="{{ route('login') }}">
-                                <span class="text-white group-hover:text-purple-200">{{ __('Intra in cont') }}</span>
+                        <div class="ml-6 mb-4 hidden md:inline-block space-x-2">
+
+                            <a class="inline-block px-4 py-1 rounded-sm bg-purple-300 text-center text-sm font-medium text-purple-700 hover:bg-rhino-900 hover:text-purple-300" href="{{ route('login') }}">
+                                {{ __('Intra in cont') }}
                             </a>
 
-                            <a class="group inline-flex items-center text-sm bg-indigo-400 px-3 py-1 rounded" href="{{ route('register') }}">
-                                <span class="text-white group-hover:text-purple-200">{{ __('Cont nou') }}</span>
+                            <a class="inline-block px-4 py-1 rounded-sm bg-purple-300 text-center text-sm font-medium text-purple-700 hover:bg-rhino-900 hover:text-purple-300" href="{{ route('register') }}">
+                                {{ __('Cont nou') }}
                             </a>
+
                         </div>
                     @endguest
                 </div>
@@ -148,21 +150,24 @@
             <div class="w-auto sm:w-1/2 xl:w-auto px-4">
                 <div class="flex items-center justify-end">
                     <div class="hidden md:flex items-center px-6 py-1 border border-coolGray-200 rounded-full">
-                        <input
-                            class="h-12 bg-transparent border-0 text-sm text-coolGray-500 placeholder-coolGray-500 outline-none"
-                            type="text" placeholder="{{ __('Cauta dupa film sau actor...') }}" name="search" id="search" fdprocessedid="r64j0t">
-                        <button class="inline-block text-coolGray-400 hover:text-rhino-500" type="submit"
-                                fdprocessedid="wjxkw">
-                            <svg width="14" height="14" viewbox="0 0 14 14" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M6.33333 11.6667C9.27885 11.6667 11.6667 9.27885 11.6667 6.33333C11.6667 3.38782 9.27885 1 6.33333 1C3.38782 1 1 3.38782 1 6.33333C1 9.27885 3.38782 11.6667 6.33333 11.6667Z"
-                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                                <path d="M13.0001 13L10.1001 10.1" stroke="currentColor" stroke-width="1.5"
-                                      stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
-                        </button>
+                        <form method="POST" action="{{ route('search') }}" >
+                            @csrf
+                            <input
+                                class="h-12 bg-transparent border-0 text-sm text-coolGray-500 placeholder-coolGray-500 outline-none"
+                                type="text" placeholder="{{ __('Cauta dupa film sau actor...') }}" name="search" id="search" fdprocessedid="r64j0t">
+                            <button class="inline-block text-coolGray-400 hover:text-rhino-500" type="submit"
+                                    fdprocessedid="wjxkw">
+                                <svg width="14" height="14" viewbox="0 0 14 14" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6.33333 11.6667C9.27885 11.6667 11.6667 9.27885 11.6667 6.33333C11.6667 3.38782 9.27885 1 6.33333 1C3.38782 1 1 3.38782 1 6.33333C1 9.27885 3.38782 11.6667 6.33333 11.6667Z"
+                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                    <path d="M13.0001 13L10.1001 10.1" stroke="currentColor" stroke-width="1.5"
+                                          stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </button>
+                        </form>
                     </div>
                     <button class="xl:hidden ml-8 navbar-burger text-coolGray-400">
                         <svg width="24" height="24" viewbox="0 0 24 24" fill="none"

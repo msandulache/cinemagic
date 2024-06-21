@@ -18,7 +18,7 @@ Route::get('/movietime', function () {
 })->name('movietime');
 
 Route::get('/contact', function () {
-
+    return view('contact');
 })->name('contact');
 
 Route::get('/wishlist', function () {
@@ -27,10 +27,15 @@ Route::get('/wishlist', function () {
 
 
 Route::get('/cart', function () {
-
+    return view('cart');
 })->name('account.cart');
 
+Route::post('/search', function () {
 
+    $movies = Movie::where('title', 'like', '%' . request('search') . '%')->get();
+
+    return view('movies.search', ['movies' => $movies]);
+})->name('search');
 
 //Route::get('/movie/{id}', function ($id) {
 //
