@@ -1,4 +1,4 @@
-<section class="relative bg-purple-700 overflow-hidden">
+<footer class="relative bg-purple-700 overflow-hidden">
     <div class="container mx-auto py-12 px-4">
         <img class="block mb-8 mx-auto max-h-28"
              src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/logo.png') }}" alt="">
@@ -87,7 +87,7 @@
         </div>
         <p class="text-center text-sm text-white">© {{ now()->year }} {{ config('app.name', 'CineMagic') }} - {{ __('Toate drepturile rezervate') }}</p>
     </div>
-</section>
+</footer>
 
 </div>
 </body>

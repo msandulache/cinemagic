@@ -16,4 +16,12 @@ class Movie extends Model
     protected static $marks = [
         Favorite::class,
     ];
+
+    public function genres() {
+        return $this->belongsToMany(Genre::class, 'movie_genre')->withTimestamps();
+    }
+
+    public function actors() {
+        return $this->belongsToMany(Actor::class, 'movie_actor')->withTimestamps();
+    }
 }

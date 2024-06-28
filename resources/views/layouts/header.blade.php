@@ -24,7 +24,6 @@
     <link rel="mask-icon" href="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/favicon/safari-pinned-tab.svg') }}" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-
 </head>
 <body class="antialiased bg-body text-body font-body">
     <div class="">

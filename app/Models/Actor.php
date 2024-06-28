@@ -10,4 +10,8 @@ class Actor extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'profile_path'];
+
+    public function movies() {
+        return $this->belongsToMany(Movie::class, 'movie_actor')->withTimestamps();
+    }
 }

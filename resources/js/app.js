@@ -1,10 +1,16 @@
 import './bootstrap';
 
-import Alpine from 'alpinejs';
+// import Alpine from 'alpinejs';
+//
+// window.Alpine = Alpine;
+//
+// Alpine.start();
 
-window.Alpine = Alpine;
+import jQuery from 'jquery';
+window.$ = jQuery;
 
-Alpine.start();
+import ModalVideo from "modal-video/lib/core/index.js";
+new ModalVideo('.js-modal-btn');
 
 // Burger menus
 document.addEventListener('DOMContentLoaded', function() {

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DemoController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Movie;
 use Illuminate\Support\Facades\Route;
@@ -7,10 +8,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
-    $movies = Movie::all()->take(9);
     $latestMovies = Movie::orderBy('created_at', 'DESC')->get()->take(3);
 
-    return view('index', ['latest_movies' => $latestMovies, 'movies' => $movies]);
+    return view('index', ['latest_movies' => $latestMovies]);
 })->name('index');
 
 Route::get('/movietime', function () {
@@ -48,6 +48,7 @@ Route::post('/search', function () {
 //    return view('dashboard');
 //})->middleware(['auth', 'verified'])->name('dashboard');
 //
+
 Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::resource('actors', \App\Http\Controllers\ActorController::class);
@@ -65,6 +66,13 @@ Route::middleware('auth')->group(function () {
 Route::resource('/movies', \App\Http\Controllers\MovieController::class);
 
 
+Route::get('/demo', [DemoController::class, 'demo'])->name('demo');
 
+Route::get('/seat/{id}', function ($id) {
+
+    $movie = Movie::find($id);
+
+    return view('seats/show', ['movie' => $movie]);
+});
 
 require __DIR__.'/auth.php';

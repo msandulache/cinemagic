@@ -17,7 +17,7 @@ class MovieSeeder extends Seeder
         $client = new \GuzzleHttp\Client();
 
         for($page = 1; $page <= 10; $page++) {
-            $response = $client->request('GET', 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=' . $page, [
+            $response = $client->request('GET', 'https://api.themoviedb.org/3/movie/now_playing?language=ro-RO&page=' . $page, [
                 'headers' => [
                     'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MWZiMjI2MzFjYmRkOTZiMzZlMWFhZDBiYjI3YmFmMSIsInN1YiI6IjY0NTUwNTAyZDQ4Y2VlMDBmY2VlYTBjMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UB6TNHT7P4Wce6O5hzDoc5sV3bf0Ox3W0Y7h4G6nroA',
                     'accept' => 'application/json',

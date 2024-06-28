@@ -1,8 +1,10 @@
 @import "font-awesome/css/font-awesome.css";
+@import "modal-video/css/modal-video.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 .text-outline {
     text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Genre;
 use App\Models\Movie;
+use App\Models\Price;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class MovieController extends Controller
 {
@@ -12,9 +15,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::all();
-
-        return view('movies.index', ['movies' => $movies]);
+        return view('movies/index');
     }
 
     /**
@@ -38,7 +39,11 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        return view('movies/show', ['movie' => $movie]);
+        return view('movies/show',
+            [
+                'price' => Price::findOrFail(date('N'))->value,
+                'movie' => $movie
+            ]);
     }
 
     /**

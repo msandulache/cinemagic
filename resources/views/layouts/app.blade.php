@@ -2,9 +2,9 @@
 
 @include('layouts.navigation')
 
-<div class="">
+<main class="">
     {{ $slot }}
-</div>
+</main>
 
 @include('layouts.footer')
 
