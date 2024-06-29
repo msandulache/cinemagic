@@ -12,7 +12,7 @@ class WishlistController extends Controller
         $movies = Movie::whereHasFavorite(
             auth()->user()
         )->get();
-        // dd($products);
+
         return view('wishlist',compact('movies'));
     }
 

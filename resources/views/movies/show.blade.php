@@ -39,11 +39,23 @@
                                     <h2 class="text-4xl font-semibold text-rhino-700">{{ number_format($price, 2) }}</h2>
                                     <p class="font-extrabold text-sm">{{ config('app.currency') }}</p>
                                 </div>
+
+                                <div class="relative mb-4 max-w-md">
+                                    <select id="showtime" class="w-full py-3 px-4 rounded-sm border border-coolGray-200" onchange="selectShowTime();">
+                                        <option value=""> -- Alege data si ora --</option>
+                                        @foreach($movie->schedules as $schedule)
+                                            <option value="{{ $schedule->id }}">
+                                                {{ \Carbon\Carbon::parse( $schedule->show_time)->format('d.m H:i')}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
                                 <div class="flex -mx-2 flex-wrap mb-10">
-                                    <div class="w-full xs:w-5/12 md:w-5/12 px-2 mb-4 xs:mb-0"><a
+                                    <div class="w-full xs:w-5/12 md:w-5/12 px-2 mb-4 xs:mb-0"><button id="buyBtn"
                                             class="block w-full px-3 py-4 rounded-sm text-center text-white text-sm font-medium bg-purple-500 hover:bg-purple-600 transition duration-200 ease-in-out duration-150"
-                                            href="/seat/{{ $movie['id'] }}">
-                                            <i class="fa fa-ticket"></i> {{ __('Cumpara bilete') }}</a></div>
+                                             onclick="if(document.getElementById('showtime').value === '') alert('{{ __('Alege mai intai data si ora filmului') }}'); else window.location.href = '/seat/' + document.getElementById('showtime').value;">
+                                            <i class="fa fa-ticket"></i> {{ __('Cumpara bilete') }}</button></div>
 
                                     @if(!empty($movie['trailer']))
                                         <div class="w-full xs:w-5/12 md:w-5/12 px-2 mb-4 xs:mb-0">

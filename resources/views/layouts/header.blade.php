@@ -14,7 +14,7 @@
         rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/seatchart.css', 'resources/js/app.js'])
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/favicon/apple-touch-icon.png') }}">

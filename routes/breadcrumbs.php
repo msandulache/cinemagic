@@ -29,6 +29,12 @@ Breadcrumbs::for('movie', function ($trail, $movie) {
     $trail->push($movie->title, route('movies.show', $movie->id));
 });
 
+// Acasa > Filme > [Film] > [Program] > Locuri
+Breadcrumbs::for('seats', function ($trail, $movieSchedule) {
+   $trail->parent('movie', $movieSchedule->movie);
+   $trail->push(date('d.m H:i', strtotime($movieSchedule->show_time)) , route('seats.show', $movieSchedule->id));
+});
+
 // Acasa > Cautare filme
 Breadcrumbs::for('search', function ($trail) {
     $trail->parent('home');
