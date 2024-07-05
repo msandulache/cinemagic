@@ -1,5 +1,7 @@
 <?php
 
+header("Access-Control-Allow-Origin: *");
+
 use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
