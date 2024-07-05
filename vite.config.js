@@ -10,8 +10,5 @@ export default defineConfig({
             ],
             refresh: true,
         }),
-    ],
-    server: {
-    origin: 'http://207.154.198.214:80',
-  },
+    ]
 });
