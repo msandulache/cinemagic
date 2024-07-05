@@ -79,11 +79,11 @@
         <div class="container px-4 mx-auto">
             <div class="flex flex-col lg:flex-row gap-12 justify-between py-16">
                 <div class="w-full lg:w-1/2">
-                    <div class="max-w-md lg:max-w-lg mx-auto">
-                        <img class="shadow-md rounded-2xl"
-                             src="{{ \Illuminate\Support\Facades\Vite::asset('resources\images\cinemagic.png') }}"
-                             alt="">
-                    </div>
+{{--                    <div class="max-w-md lg:max-w-lg mx-auto">--}}
+{{--                        <img class="shadow-md rounded-2xl"--}}
+{{--                             src="{{ \Illuminate\Support\Facades\Vite::asset('resources\images\cinemagic.png') }}"--}}
+{{--                             alt="">--}}
+{{--                    </div>--}}
                 </div>
                 <div class="w-full lg:w-1/2">
                     <div class="max-w-md lg:max-w-xl mx-auto">
