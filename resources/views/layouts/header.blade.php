@@ -18,7 +18,7 @@
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/favicon/apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/favicon//favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/favicon/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/favicon/favicon-16x16.png') }}">
     <link rel="manifest" href="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/favicon/site.webmanifest') }}">
     <link rel="mask-icon" href="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/favicon/safari-pinned-tab.svg') }}" color="#5bbad5">
