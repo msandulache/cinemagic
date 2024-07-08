@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Maize\Markable\Markable;
 use Maize\Markable\Models\Favorite;
 
@@ -17,15 +19,18 @@ class Movie extends Model
         Favorite::class,
     ];
 
-    public function genres() {
+    public function genres(): BelongsToMany
+    {
         return $this->belongsToMany(Genre::class, 'movie_genre')->withTimestamps();
     }
 
-    public function actors() {
+    public function actors(): BelongsToMany
+    {
         return $this->belongsToMany(Actor::class, 'movie_actor')->withTimestamps();
     }
 
-    public function schedules() {
-        return $this->hasMany(MovieSchedule::class);
+    public function hours(): HasMany
+    {
+        return $this->hasMany(MovieHour::class);
     }
 }

@@ -9,8 +9,8 @@
                         <div class="w-full lg:w-1/2 p-4">
                             <div class="lg:max-w-md">
                                 <img id="main-image" class="block w-full rounded-xl mb-4"
-                                     src="{{ config('services.tmdb.original_image') }}{{ $movie['poster_path'] }}"
-                                     alt="">
+                                     src="{{ $movie['poster_path'] }}"
+                                     alt="{{ $movie['title'] }}">
                             </div>
                         </div>
                         <div class="w-full lg:w-1/2 p-4">
@@ -43,9 +43,9 @@
                                 <div class="relative mb-4 max-w-md">
                                     <select id="showtime" class="w-full py-3 px-4 rounded-sm border border-coolGray-200" onchange="selectShowTime();">
                                         <option value=""> -- Alege data si ora --</option>
-                                        @foreach($movie->schedules as $schedule)
-                                            <option value="{{ $schedule->id }}">
-                                                {{ \Carbon\Carbon::parse( $schedule->show_time)->format('d.m H:i')}}
+                                        @foreach($movie->hours as $hour)
+                                            <option value="{{ $hour->id }}">
+                                                {{ \Carbon\Carbon::parse( $hour->hour)->format('d.m H:i')}}
                                             </option>
                                         @endforeach
                                     </select>
@@ -54,7 +54,7 @@
                                 <div class="flex -mx-2 flex-wrap mb-10">
                                     <div class="w-full xs:w-5/12 md:w-5/12 px-2 mb-4 xs:mb-0"><button id="buyBtn"
                                             class="block w-full px-3 py-4 rounded-sm text-center text-white text-sm font-medium bg-purple-500 hover:bg-purple-600 transition duration-200 ease-in-out duration-150"
-                                             onclick="if(document.getElementById('showtime').value === '') alert('{{ __('Alege mai intai data si ora filmului') }}'); else window.location.href = '/seat/' + document.getElementById('showtime').value;">
+                                             onclick="if(document.getElementById('showtime').value === '') alert('{{ __('Alege mai intai data si ora filmului') }}'); else window.location.href = '/seats/' + document.getElementById('showtime').value;">
                                             <i class="fa fa-ticket"></i> {{ __('Cumpara bilete') }}</button></div>
 
                                     @if(!empty($movie['trailer']))

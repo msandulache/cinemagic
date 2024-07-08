@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('poster_path');
             $table->string('trailer');
             $table->integer('runtime');
+            $table->boolean('is_premium')->default(false);
             $table->timestamps();
         });
     }

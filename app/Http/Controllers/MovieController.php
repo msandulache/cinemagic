@@ -15,7 +15,9 @@ class MovieController extends Controller
      */
     public function index()
     {
-        return view('movies/index');
+        $movies = Movie::all();
+
+        return view('movies/index', ['movies' => $movies]);
     }
 
     /**
@@ -39,11 +41,13 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        return view('movies/show',
+        return view(
+            'movies/show',
             [
                 'price' => Price::findOrFail(date('N'))->value,
                 'movie' => $movie
-            ]);
+            ]
+        );
     }
 
     /**
@@ -68,5 +72,16 @@ class MovieController extends Controller
     public function destroy(Movie $movie)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $movies = Movie::where('title', 'LIKE', '%' . $search . '%')->get();
+
+        return view('movies/search', [
+            'movies' => $movies,
+            'search' => $search
+        ]);
     }
 }

@@ -1,6 +1,6 @@
 <x-app-layout>
     <div>
-        {{ Breadcrumbs::render('seats', $movieSchedule) }}
+        {{ Breadcrumbs::render('seats', $movieHour) }}
 
         <section class="py-12 md:py-24 lg:py-16">
             <div class="container px-4 mx-auto">
@@ -8,9 +8,9 @@
                     <div id="container" class="sc-main-container">
                         <div class="sc-map">
                             <div class="sc-indexer sc-indexer-rows">
-                                @foreach($indexerRows as $indexerRow)
-                                    @if($indexerRow !== " ")
-                                        <div class="sc-seat-indexer">{{ $indexerRow }}</div>
+                                @foreach($seatRows as $seatRow)
+                                    @if($seatRow !== " ")
+                                        <div class="sc-seat-indexer">{{ $seatRow }}</div>
                                     @else
                                         <div class="sc-spacer"></div>
                                     @endif
@@ -19,23 +19,23 @@
                             <div class="sc-map-inner-container">
                                 <div class="sc-front">{{ __('Ecran') }}</div>
                                 <div class="sc-indexer sc-indexer-columns">
-                                    @foreach($indexerColumns as $indexerColumn)
-                                        @if($indexerColumn !== " ")
-                                            <div class="sc-seat-indexer">{{ $indexerColumn }}</div>
+                                    @foreach($seatColumns as $seatColumn)
+                                        @if($seatColumn !== " ")
+                                            <div class="sc-seat-indexer">{{ $seatColumn }}</div>
                                         @else
                                             <div class="sc-spacer"></div>
                                         @endif
                                     @endforeach
                                 </div>
                                 <div class="sc-seats-container">
-                                    @foreach($indexerRows as $indexerRow)
-                                        @if($indexerRow !== " ")
+                                    @foreach($seatRows as $seatRow)
+                                        @if($seatRow !== " ")
                                             <div class="sc-seat-row">
-                                                @foreach($indexerColumns as $indexerColumn)
-                                                    @if($indexerColumn !== " ")
+                                                @foreach($seatColumns as $seatColumn)
+                                                    @if($seatColumn !== " ")
                                                         <div
                                                             class="sc-seat sc-seat-available"
-                                                            onclick="toggleSeat(this);">{{ $indexerRow }}{{ $indexerColumn }}</div>
+                                                            onclick="toggleSeat(this);">{{ $seatRow }}{{ $seatColumn }}</div>
                                                     @else
                                                         <div class="sc-spacer"></div>
                                                     @endif
@@ -59,11 +59,11 @@
                     enctype="multipart/form-data" id="add-to-cart-form">
                     @csrf
 
-                    <input type="hidden" name="price" value="{{ $price->value }}" />
-                    <input type="hidden" name="movie_schedule_id" value="{{ $movieSchedule['id'] }}" />
+                    <input type="hidden" name="price" value="{{ $price->value }}"/>
+                    <input type="hidden" name="movie_schedule_id" value="{{ $movieHour['id'] }}"/>
 
                     <button type="submit"
-                            class="bg-purple-500 hover:bg-purple-600 text-white text-sm py-2 px-4 mt-3 rounded" >
+                            class="bg-purple-500 hover:bg-purple-600 text-white text-sm py-2 px-4 mt-3 rounded">
                         <i class="fa fa-shopping-cart"></i> Adauga in cos
                     </button>
                 </form>
@@ -73,11 +73,10 @@
     </div>
 
     <script>
-        function toggleSeat(seat)
-        {
+        function toggleSeat(seat) {
             seat.classList.toggle('sc-seat-selected');
 
-            if(seat.classList.contains('sc-seat-selected')) {
+            if (seat.classList.contains('sc-seat-selected')) {
                 var input = document.createElement("input");
                 input.setAttribute("type", "hidden");
                 input.setAttribute("name", "seats[]");
@@ -85,7 +84,7 @@
                 input.setAttribute("id", 'seat_' + seat.innerHTML);
                 document.getElementById("add-to-cart-form").prepend(input);
             } else {
-                if (document.getElementById('seat_' + seat.innerHTML)){
+                if (document.getElementById('seat_' + seat.innerHTML)) {
                     var seat = document.getElementById('seat_' + seat.innerHTML);
                     var form = document.getElementById('add-to-cart-form');
                     form.removeChild(seat);

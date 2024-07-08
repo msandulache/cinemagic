@@ -3,19 +3,19 @@
         <div class="flex flex-wrap -mx-4 items-center justify-between ">
             <div class="w-full lg:w-1/2 px-4 mb-6 lg:mb-0">
                 <div class="-mb-4">
-                    <a class="group mb-4 mr-6 inline-flex items-center text-sm" href="mailto:{{ config('mail.from.address', 'office@cinemagic.ro') }}">
+                    <a class="group mb-4 mr-6 inline-flex items-center text-sm" href="mailto:{{ config('mail.from.address', 'suport@cinemagic.ro') }}">
                         <span class="mr-2 text-purple-400">
-                <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                      d="M1.80008 0C1.67638 0.000162751 1.55768 0.0738921 1.47011 0.20508C1.38265 0.336427 1.3335 0.514491 1.3335 0.700042L1.3335 15.3001C1.3335 15.4857 1.38265 15.6637 1.47011 15.7951C1.55767 15.9263 1.67638 16 1.80008 16L14.5557 16C14.6794 16 14.7981 15.9263 14.8857 15.7951C14.9731 15.6637 15.0223 15.4857 15.0223 15.3001L15.0223 0.700042C15.0223 0.514495 14.9732 0.336431 14.8857 0.20508C14.7981 0.0738962 14.6794 0.000162501 14.5557 0L1.80008 0ZM3.12237 1.40009L13.2335 1.40009L8.17796 7.50305L3.12237 1.40009ZM2.26678 2.15839L7.88626 8.93968C7.96905 9.03913 8.07192 9.09333 8.17793 9.09333C8.28394 9.09333 8.38681 9.03913 8.4696 8.93968L14.0891 2.15839L14.0891 14.6001L2.26678 14.6001L2.26678 2.15839Z"
-                      fill="currentColor"></path>
-                </svg>
-              </span>
+                            <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                  d="M1.80008 0C1.67638 0.000162751 1.55768 0.0738921 1.47011 0.20508C1.38265 0.336427 1.3335 0.514491 1.3335 0.700042L1.3335 15.3001C1.3335 15.4857 1.38265 15.6637 1.47011 15.7951C1.55767 15.9263 1.67638 16 1.80008 16L14.5557 16C14.6794 16 14.7981 15.9263 14.8857 15.7951C14.9731 15.6637 15.0223 15.4857 15.0223 15.3001L15.0223 0.700042C15.0223 0.514495 14.9732 0.336431 14.8857 0.20508C14.7981 0.0738962 14.6794 0.000162501 14.5557 0L1.80008 0ZM3.12237 1.40009L13.2335 1.40009L8.17796 7.50305L3.12237 1.40009ZM2.26678 2.15839L7.88626 8.93968C7.96905 9.03913 8.07192 9.09333 8.17793 9.09333C8.28394 9.09333 8.38681 9.03913 8.4696 8.93968L14.0891 2.15839L14.0891 14.6001L2.26678 14.6001L2.26678 2.15839Z"
+                                  fill="currentColor"></path>
+                            </svg>
+                        </span>
                         <span class="text-white group-hover:text-purple-200">
                             <span class="__cf_email__"
-                                  data-cfemail="167579786277756256657e6370707a73636e3875797b">{{ config('mail.from.address', 'office@cinemagic.ro') }}
+                                  data-cfemail="167579786277756256657e6370707a73636e3875797b">{{ config('mail.from.address', 'suport@cinemagic.ro') }}
                             </span>
-                      </span>
+                        </span>
                     </a>
                     <a class="group mb-4 inline-flex items-center text-sm" href="tel: 0745608128">
                           <span class="mr-2 text-purple-400">
@@ -66,7 +66,7 @@
                         </div>
 
                         <div class="mt-1 mb-4 space-x-2">
-                            <a class="inline-flex items-center text-sm text-purple-400 hover:text-purple-200" href="{{ route('account.cart') }}">
+                            <a class="inline-flex items-center text-sm text-purple-400 hover:text-purple-200" href="{{ route('cart.index') }}">
                                 <svg width="18" height="17" viewbox="0 0 18 17" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -84,17 +84,17 @@
                                 </svg>
                             </a>
 
-                            <a class="group mr-2 inline-flex items-center text-sm" href="{{ route('wishlist') }}">
-                            <span class="md:mr-2 text-purple-400">
-                              <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_1208_8162)">
-                                  <path
-                                      d="M14.1941 3.07455C13.8536 2.73389 13.4493 2.46365 13.0043 2.27927C12.5594 2.0949 12.0824 2 11.6008 2C11.1191 2 10.6422 2.0949 10.1972 2.27927C9.75224 2.46365 9.34795 2.73389 9.00745 3.07455L8.30078 3.78122L7.59411 3.07455C6.90632 2.38676 5.97347 2.00036 5.00078 2.00036C4.02809 2.00036 3.09524 2.38676 2.40745 3.07455C1.71965 3.76235 1.33325 4.69519 1.33325 5.66788C1.33325 6.64057 1.71965 7.57342 2.40745 8.26122L3.11411 8.96788L8.30078 14.1545L13.4874 8.96788L14.1941 8.26122C14.5348 7.92071 14.805 7.51643 14.9894 7.07145C15.1738 6.62648 15.2687 6.14954 15.2687 5.66788C15.2687 5.18623 15.1738 4.70929 14.9894 4.26431C14.805 3.81934 14.5348 3.41505 14.1941 3.07455V3.07455Z"
-                                      stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                      stroke-linejoin="round"></path>
-                                </g>
-                              </svg>
-                            </span>
+                            <a class="group mr-2 inline-flex items-center text-sm" href="{{ route('favorite.index') }}">
+                                <span class="md:mr-2 text-purple-400">
+                                  <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_1208_8162)">
+                                      <path
+                                          d="M14.1941 3.07455C13.8536 2.73389 13.4493 2.46365 13.0043 2.27927C12.5594 2.0949 12.0824 2 11.6008 2C11.1191 2 10.6422 2.0949 10.1972 2.27927C9.75224 2.46365 9.34795 2.73389 9.00745 3.07455L8.30078 3.78122L7.59411 3.07455C6.90632 2.38676 5.97347 2.00036 5.00078 2.00036C4.02809 2.00036 3.09524 2.38676 2.40745 3.07455C1.71965 3.76235 1.33325 4.69519 1.33325 5.66788C1.33325 6.64057 1.71965 7.57342 2.40745 8.26122L3.11411 8.96788L8.30078 14.1545L13.4874 8.96788L14.1941 8.26122C14.5348 7.92071 14.805 7.51643 14.9894 7.07145C15.1738 6.62648 15.2687 6.14954 15.2687 5.66788C15.2687 5.18623 15.1738 4.70929 14.9894 4.26431C14.805 3.81934 14.5348 3.41505 14.1941 3.07455V3.07455Z"
+                                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                          stroke-linejoin="round"></path>
+                                    </g>
+                                  </svg>
+                                </span>
                             </a>
                         </div>
                     @endauth
@@ -116,21 +116,22 @@
             </div>
         </div>
     </div>
+
     <div class="h-20 py-4 px-6 bg-white">
         <div class="flex h-full -mx-4 items-center justify-between">
             <div class="w-auto sm:w-1/2 xl:w-auto px-4">
                 <div class="flex items-center">
-                    <a class="inline-block mr-12 font-bold h-9" href="{{ route('index') }}">
+                    <a class="inline-block mr-12 font-bold h-9" href="{{ route('page.home') }}">
                         <img class="h-auto logo"
                              src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/logo.png') }}" alt="">
                     </a>
                     <div class="hidden xl:block">
                         <a class="inline-flex mr-10 items-center text-sm font-bold text-rhino-700 hover:text-rhino-400"
-                           href="{{ route('index') }}">
+                           href="{{ route('page.home') }}">
                             <span class="mr-2">{{ __('Acasa') }}</span>
                         </a>
                         <a class="inline-flex mr-10 items-center text-sm font-bold text-rhino-700 hover:text-rhino-400"
-                           href="{{ route('movietime') }}">
+                           href="{{ route('moviehours.index') }}">
                             <span class="mr-2">{{ __('Program') }}</span>
                         </a>
                         <a class="inline-flex mr-10 items-center text-sm font-bold text-rhino-700 hover:text-rhino-400"
@@ -138,18 +139,18 @@
                             <span class="mr-2">{{ __('Filme') }}</span>
                         </a>
                         <a class="inline-flex items-center text-sm font-bold text-rhino-700 hover:text-rhino-400"
-                           href="{{ route('contact') }}">{{ __('Contact') }}</a>
+                           href="{{ route('page.contact') }}">{{ __('Contact') }}</a>
                     </div>
                 </div>
             </div>
             <div class="w-auto sm:w-1/2 xl:w-auto px-4">
                 <div class="flex items-center justify-end">
                     <div class="hidden md:flex items-center px-6 py-1 border border-coolGray-200 rounded-full">
-                        <form method="POST" action="{{ route('search') }}" >
+                        <form method="POST" action="{{ route('movies.search') }}" >
                             @csrf
                             <input
                                 class="h-12 bg-transparent border-0 text-sm text-coolGray-500 placeholder-coolGray-500 outline-none"
-                                type="text" placeholder="{{ __('Cauta dupa film sau actor...') }}" name="search" id="search" fdprocessedid="r64j0t">
+                                type="text" placeholder="{{ __('Cauta dupa film sau actor...') }}" name="search" id="search">
                             <button class="inline-block text-coolGray-400 hover:text-rhino-500" type="submit"
                                     fdprocessedid="wjxkw">
                                 <svg width="14" height="14" viewbox="0 0 14 14" fill="none"
@@ -180,11 +181,12 @@
         </div>
     </div>
 </nav>
+
 <div class="hidden navbar-menu fixed top-0 left-0 bottom-0 w-5/6 max-w-md z-50">
     <div class="navbar-backdrop fixed inset-0 bg-purple-800 opacity-70"></div>
     <nav class="relative flex flex-col pt-12 pb-6 px-8 w-full h-full bg-white overflow-y-auto">
         <div class="flex mb-12 items-center">
-            <a class="inline-block mr-auto" href="{{ route('index') }}">
+            <a class="inline-block mr-auto" href="{{ route('page.home') }}">
                 <img class="h-16" src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/logo.png') }}" alt="">
             </a>
             <a class="navbar-close" href="#">
@@ -241,7 +243,7 @@
                             </a>
                         </li>
                         <li class="mb-3">
-                            <a class="group mr-6 inline-flex items-center text-base" href="{{ route('wishlist') }}">
+                            <a class="group mr-6 inline-flex items-center text-base" href="{{ route('favorite.index') }}">
                               <span class="mr-2 text-purple-400">
                                 <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <g clip-path="url(#clip0_1208_8162)">
@@ -255,7 +257,7 @@
                             </a>
                         </li>
                         <li class="mb-12">
-                            <a class="inline-flex items-center text-base text-purple-400 hover:text-purple-200" href="{{ route('account.cart') }}">
+                            <a class="inline-flex items-center text-base text-purple-400 hover:text-purple-200" href="{{ route('cart.index') }}">
                               <span class="mr-2 text-purple-400">
                                 <svg width="18" height="17" viewbox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <path
@@ -275,12 +277,12 @@
                 @endauth
 
                 <li class="mb-4"><a class="flex items-center text-base font-bold text-rhino-700"
-                                    href="{{ route('index') }}">{{ __('Acasa') }}</a></li>
-                <li class="mb-4"><a class="flex items-center text-base font-bold text-rhino-700" href="{{ route('movietime') }}">{{ __('Program') }}</a>
+                                    href="{{ route('page.home') }}">{{ __('Acasa') }}</a></li>
+                <li class="mb-4"><a class="flex items-center text-base font-bold text-rhino-700" href="{{ route('moviehours.index') }}">{{ __('Program') }}</a>
                 </li>
                 <li class="mb-4"><a class="flex items-center text-base font-bold text-rhino-700" href="{{ route('movies.index') }}">{{ __('Filme') }}</a>
                 </li>
-                <li><a class="flex items-center text-base font-bold text-rhino-700 hover:text-rhino-400" href="{{ route('contact') }}">{{ __('Contact') }}</a>
+                <li><a class="flex items-center text-base font-bold text-rhino-700 hover:text-rhino-400" href="{{ route('page.contact') }}">{{ __('Contact') }}</a>
                 </li>
             </ul>
         </div>

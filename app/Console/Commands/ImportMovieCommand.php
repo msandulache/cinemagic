@@ -7,6 +7,8 @@ use App\Models\Genre;
 use App\Models\Movie;
 use App\Models\Price;
 use Illuminate\Console\Command;
+use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
 
 class ImportMovieCommand extends Command
@@ -38,9 +40,8 @@ class ImportMovieCommand extends Command
     private function importPrice()
     {
         $daysOfWeek = [1, 2, 3, 4, 5, 6, 7];
-        foreach ($daysOfWeek as $dayOfWeek)
-        {
-            if($dayOfWeek < 5) {
+        foreach ($daysOfWeek as $dayOfWeek) {
+            if ($dayOfWeek < 5) {
                 $value = 17;
             } else {
                 $value = 22;
@@ -55,7 +56,7 @@ class ImportMovieCommand extends Command
     private function importGenres()
     {
         $results = Http::asJson()
-            ->get(config('services.tmdb.endpoint').'genre/movie/list?language='. config('services.tmdb.language') . '&api_key='.config('services.tmdb.api'))
+            ->get(config('services.tmdb.endpoint').'genre/movie/list?language='.config('services.tmdb.language').'&api_key='.config('services.tmdb.api'))
             ->throw()
             ->json();
 
@@ -71,10 +72,15 @@ class ImportMovieCommand extends Command
         }
     }
 
+    /**
+     * @throws RequestException
+     * @throws ConnectionException
+     * @throws \Exception
+     */
     private function importMovies()
     {
         $data = Http::asJson()
-            ->get(config('services.tmdb.endpoint').'movie/now_playing?language='. config('services.tmdb.language') . '&api_key='.config('services.tmdb.api'))
+            ->get(config('services.tmdb.endpoint').'movie/now_playing?language='.config('services.tmdb.language').'&api_key='.config('services.tmdb.api'))
             ->throw()
             ->json();
 
@@ -97,7 +103,7 @@ class ImportMovieCommand extends Command
                     'overview' => $tmdbMovie['overview'],
                     'poster_path' => $tmdbMovie['poster_path'],
                     'trailer' => $this->getTrailer($tmdbMovie['id']),
-                    'runtime' => $tmdbMovie['runtime']
+                    'runtime' => $tmdbMovie['runtime'],
                 ]);
 
                 foreach ($tmdbMovie['genres'] as $genre) {
@@ -122,10 +128,14 @@ class ImportMovieCommand extends Command
         }
     }
 
+    /**
+     * @throws RequestException
+     * @throws ConnectionException
+     */
     private function getTrailer(int $movieId): string
     {
         $data = Http::asJson()
-            ->get(config('services.tmdb.endpoint').'movie/' . $movieId . '/videos?language=en-US&api_key='.config('services.tmdb.api'))
+            ->get(config('services.tmdb.endpoint').'movie/'.$movieId.'/videos?language=en-US&api_key='.config('services.tmdb.api'))
             ->throw()
             ->json();
 
@@ -133,8 +143,8 @@ class ImportMovieCommand extends Command
             throw new \Exception('Videos not found');
         }
 
-        foreach($data['results'] as $video) {
-            if('Trailer' == $video['type']) {
+        foreach ($data['results'] as $video) {
+            if ('Trailer' == $video['type']) {
                 return $video['key'];
             }
         }
@@ -147,14 +157,14 @@ class ImportMovieCommand extends Command
         $actors = [];
 
         $data = Http::asJson()
-            ->get(config('services.tmdb.endpoint').'movie/' . $movieId . '/credits?language=en-US&api_key='.config('services.tmdb.api'))
+            ->get(config('services.tmdb.endpoint').'movie/'.$movieId.'/credits?language=en-US&api_key='.config('services.tmdb.api'))
             ->throw()
             ->json();
         if (!isset($data['cast'])) {
             throw new \Exception('Actors not found');
         }
 
-        foreach($data['cast'] as $actor) {
+        foreach ($data['cast'] as $actor) {
             $actors[] = [
                 'name' => $actor['name'],
                 'profile_path' => $actor['profile_path'],

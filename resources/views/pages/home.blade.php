@@ -19,12 +19,12 @@
                     <div class="w-full lg:w-1/2 px-8 mb-12">
                         <div class="relative">
                             <div class="flex flex-wrap -mx-4">
-                                @foreach($latest_movies as $latest_movie)
+                                @foreach($premiumMovies as $premiumMovie)
                                     <div class="w-1/3 px-4 group">
-                                        <a href="{{ route('movies.show', ['movie' => $latest_movie]) }}">
+                                        <a href="{{ route('movies.show', ['movie' => $premiumMovie]) }}">
                                             <img class="block rounded-xl w-full group-hover:opacity-75"
-                                                 src="https://image.tmdb.org/t/p/original{{ $latest_movie['poster_path'] }}"
-                                                 alt="">
+                                                 src="{{ $premiumMovie['poster_path'] }}"
+                                                 alt="{{ $premiumMovie['title'] }}">
                                         </a>
                                     </div>
                                 @endforeach
@@ -79,11 +79,11 @@
         <div class="container px-4 mx-auto">
             <div class="flex flex-col lg:flex-row gap-12 justify-between py-16">
                 <div class="w-full lg:w-1/2">
-{{--                    <div class="max-w-md lg:max-w-lg mx-auto">--}}
-{{--                        <img class="shadow-md rounded-2xl"--}}
-{{--                             src="{{ \Illuminate\Support\Facades\Vite::asset('resources\images\cinemagic.png') }}"--}}
-{{--                             alt="">--}}
-{{--                    </div>--}}
+                    <div class="max-w-md lg:max-w-lg mx-auto">
+                        <img class="shadow-md rounded-2xl"
+                             src="{{ \Illuminate\Support\Facades\Vite::asset('resources\images\cinemagic.png') }}"
+                             alt="">
+                    </div>
                 </div>
                 <div class="w-full lg:w-1/2">
                     <div class="max-w-md lg:max-w-xl mx-auto">
@@ -101,6 +101,22 @@
         </div>
     </section>
 
-    <livewire:movies />
+    <div class="py-6">
+        <div class="container px-4 mx-auto">
+            <h2 class="text-4xl text-center font-heading font-semibold text-rhino-600 tracking-xs mb-14">{{ __('Urmatoarele filme') }}</h2>
+            <div class="flex flex-wrap">
+
+                <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                    @forelse($movieHours as $movieHour)
+                        @include('partials.movieHour', ['movieHour' => $movieHour])
+                    @empty
+                        <div>
+                            {{ __('Ne pare rau, dar nu am gasit filme') }}
+                        </div>
+                    @endforelse
+                </div>
+            </div>
+        </div>
+    </div>
 
 </x-app-layout>

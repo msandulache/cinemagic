@@ -12,10 +12,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('movie_schedules', function (Blueprint $table) {
+        Schema::create('movie_hours', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Movie::class)->constrained()->cascadeOnDelete();
-            $table->dateTime('show_time');
+            $table->dateTime('hour');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('movie_schedules');
+        Schema::dropIfExists('movie_hours');
     }
 };

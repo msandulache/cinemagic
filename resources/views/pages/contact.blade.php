@@ -5,7 +5,7 @@
     <section class="overflow-hidden py-12">
         <div class="container mx-auto px-4">
             <div class="bg-purple-100 rounded-lg py-12 px-8 max-w-lg mx-auto">
-                <form method="POST" action="{{ route('contact') }}">
+                <form method="POST" action="{{ route('page.contact') }}">
                     @csrf
                     <p class="uppercase text-rhino-300 text-xs font-bold tracking-widest mb-1 text-center">{{ __('FORMULAR CONTACT') }}</p>
                     <h1 class="font-heading font-semibold text-4xl text-rhino-700 text-center mb-8">{{ __('Trimite un mesaj') }}</h1>

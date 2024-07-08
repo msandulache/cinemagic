@@ -2,13 +2,13 @@
 
 // Acasa
 Breadcrumbs::for('home', function ($trail) {
-    $trail->push('Acasa', route('index'));
+    $trail->push('Acasa', route('page.home'));
 });
 
 // Acasa > Program
-Breadcrumbs::for('movietime', function ($trail) {
+Breadcrumbs::for('moviehours', function ($trail) {
     $trail->parent('home');
-    $trail->push('Program', route('movietime'));
+    $trail->push('Program', route('moviehours.index'));
 });
 
 // Acasa > Filme
@@ -20,7 +20,13 @@ Breadcrumbs::for('movies', function ($trail) {
 // Acasa > Contact
 Breadcrumbs::for('contact', function ($trail) {
     $trail->parent('home');
-    $trail->push('Contact', route('contact'));
+    $trail->push('Contact', route('page.contact'));
+});
+
+// Acasa > Cautare filme
+Breadcrumbs::for('search', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Cautare filme', route('movies.search'));
 });
 
 // Acasa > Filme > [Film]
@@ -30,15 +36,9 @@ Breadcrumbs::for('movie', function ($trail, $movie) {
 });
 
 // Acasa > Filme > [Film] > [Program] > Locuri
-Breadcrumbs::for('seats', function ($trail, $movieSchedule) {
-   $trail->parent('movie', $movieSchedule->movie);
-   $trail->push(date('d.m H:i', strtotime($movieSchedule->show_time)) , route('seats.show', $movieSchedule->id));
-});
-
-// Acasa > Cautare filme
-Breadcrumbs::for('search', function ($trail) {
-    $trail->parent('home');
-    $trail->push('Cautare filme', route('search'));
+Breadcrumbs::for('seats', function ($trail, $movieHour) {
+    $trail->parent('movie', $movieHour->movie);
+    $trail->push(date('d.m H:i', strtotime($movieHour->hour)), route('moviehours.seats', $movieHour->id));
 });
 
 // Acasa > Intra in cont

@@ -32,12 +32,15 @@
                         </x-primary-button>
                     </div>
 
-                    <div class="mt-4">
+                    <div class="mt-4 flex justify-between">
                         @if (Route::has('password.request'))
                             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
                                 {{ __('Ai uitat parola?') }}
                             </a>
                         @endif
+                            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('register') }}">
+                                {{ __('Nu ai cont?') }}
+                            </a>
                     </div>
 {{--                    <a class="mb-4 w-full rounded-sm bg-white shadow-md py-3 px-6 flex items-center justify-center gap-4 text-coolGray-700 hover:bg-purple-500 hover:text-white transition duration-200" href="#">--}}
 {{--                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewbox="0 0 25 24" fill="none">--}}

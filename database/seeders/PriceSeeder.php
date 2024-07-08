@@ -3,15 +3,16 @@
 namespace Database\Seeders;
 
 use App\Models\Genre;
+use App\Models\Price;
 use Illuminate\Database\Seeder;
 
-class GenreSeeder extends Seeder
+class PriceSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Genre::factory(10)->create();
+        Price::factory(7)->create();
     }
 }
