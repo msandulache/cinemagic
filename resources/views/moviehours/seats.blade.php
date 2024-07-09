@@ -33,9 +33,15 @@
                                             <div class="sc-seat-row">
                                                 @foreach($seatColumns as $seatColumn)
                                                     @if($seatColumn !== " ")
-                                                        <div
-                                                            class="sc-seat sc-seat-available"
-                                                            onclick="toggleSeat(this);">{{ $seatRow }}{{ $seatColumn }}</div>
+                                                        @if(in_array($seatRow . $seatColumn, $reservedSeats))
+                                                            <div
+                                                                class="sc-seat sc-seat-reserved"
+                                                                onclick="toggleSeat(this);">{{ $seatRow . $seatColumn }}</div>
+                                                        @else
+                                                            <div
+                                                                class="sc-seat sc-seat-available"
+                                                                onclick="toggleSeat(this);">{{ $seatRow . $seatColumn }}</div>
+                                                        @endif
                                                     @else
                                                         <div class="sc-spacer"></div>
                                                     @endif
@@ -60,7 +66,7 @@
                     @csrf
 
                     <input type="hidden" name="price" value="{{ $price->value }}"/>
-                    <input type="hidden" name="movie_schedule_id" value="{{ $movieHour['id'] }}"/>
+                    <input type="hidden" name="movie_hour_id" value="{{ $movieHour['id'] }}"/>
 
                     <button type="submit"
                             class="bg-purple-500 hover:bg-purple-600 text-white text-sm py-2 px-4 mt-3 rounded">

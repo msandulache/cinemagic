@@ -3,20 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use Illuminate\Http\RedirectResponse;
 use Maize\Markable\Models\Favorite;
 
 class WishlistController extends Controller
 {
-    public function wishlist()
+    public function index()
     {
         $movies = Movie::whereHasFavorite(
             auth()->user()
         )->get();
 
-        return view('wishlist',compact('movies'));
+        return view('profile/wishlist', compact('movies'));
     }
 
-    public function favoriteAdd($id)
+    public function favoriteAdd($id): RedirectResponse
     {
         $movie = Movie::find($id);
         $user = auth()->user();
@@ -26,7 +27,7 @@ class WishlistController extends Controller
         return redirect()->route('wishlist');
     }
 
-    public function favoriteRemove($id)
+    public function favoriteRemove($id): RedirectResponse
     {
         $movie = Movie::find($id);
         $user = auth()->user();

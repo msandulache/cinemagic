@@ -4,19 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\CartItem;
-use App\Models\Movie;
-use Maize\Markable\Models\Favorite;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    public function wishlist()
+    public function index()
     {
-        $movies = Movie::whereHasFavorite(
-            auth()->user()
-        )->get();
+        $cart = Cart::where('user_id', auth()->user()->id)
+        ->where('session_id', session()->getId())
+        ->first();
 
-        return view('wishlist',compact('movies'));
+        return view('profile/cart', ['cart' => $cart, 'total' => $cart->cartItems()->sum('price')]);
     }
 
     public function add(Request $request)
@@ -29,7 +27,7 @@ class CartController extends Controller
         $cartItems = [];
         foreach($request->seats as $seat) {
             $cartItems[] = new CartItem([
-                'movie_schedule_id' => $request->movie_schedule_id,
+                'movie_hour_id' => $request->movie_hour_id,
                 'seat' => $seat,
                 'price' => $request->price
             ]);
@@ -37,18 +35,34 @@ class CartController extends Controller
 
         $cart->cartItems()->saveMany($cartItems);
 
-        session()->flash('success', 'Biletele a fost adăugate la Favorite cu succes!');
+        if($request->seats == 1) {
+            session()->flash('success', 'Biletul a fost adaugat in cos cu succes!');
+        }
 
-        return redirect()->route('wishlist');
+        if($request->seats > 1) {
+            session()->flash('success', 'Biletele a fost adaugate in cos cu succes!');
+        }
+
+        return redirect()->route('cart');
     }
 
-    public function favoriteRemove($id)
+    public function remove(int $cartItemId)
     {
-        $movie = Movie::find($id);
-        $user = auth()->user();
-        Favorite::remove($movie, $user);
-        session()->flash('success', 'Filmul este eliminat de la Favorite cu succes!');
+        $cartItem = CartItem::find($cartItemId);
+        $cartItem->delete();
 
-        return redirect()->route('wishlist');
+        session()->flash('success', 'Biletul a fost eliminat din cos cu succes!');
+
+        return redirect()->route('cart');
+    }
+
+    public function empty(int $cartId)
+    {
+        $cart = Cart::find($cartId);
+        $cart->delete();
+
+        session()->flash('success', 'Cosul de cumparaturi a fost golit cu succes!');
+
+        return redirect()->route('cart');
     }
 }

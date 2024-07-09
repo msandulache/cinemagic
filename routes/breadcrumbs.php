@@ -53,12 +53,6 @@ Breadcrumbs::for('register', function ($trail) {
     $trail->push('Cont nou', route('register'));
 });
 
-// Acasa > Cos de cumparaturi
-Breadcrumbs::for('cart', function ($trail) {
-    $trail->parent('home');
-    $trail->push('Cos de cumparaturi', route('account.cart'));
-});
-
 // Acasa > Contul meu
 Breadcrumbs::for('profile', function ($trail) {
     $trail->parent('home');
@@ -69,4 +63,23 @@ Breadcrumbs::for('profile', function ($trail) {
 Breadcrumbs::for('wishlist', function ($trail) {
     $trail->parent('profile');
     $trail->push('Lista de dorinte', route('wishlist'));
+});
+
+
+// Acasa > Contul meu > Cos de cumparaturi
+Breadcrumbs::for('cart', function ($trail) {
+    $trail->parent('profile');
+    $trail->push('Cos de cumparaturi', route('cart'));
+});
+
+// Acasa > Contul meu > Istoric comenzi
+Breadcrumbs::for('order-history', function ($trail) {
+    $trail->parent('profile');
+    $trail->push('Istoric comenzi', route('order.history'));
+});
+
+// Acasa > Contul meu > Istoric comenzi > [Comanda]
+Breadcrumbs::for('order-items', function ($trail, $order) {
+    $trail->parent('order-history');
+    $trail->push('Detalii comanda: #' . $order->id, route('order.items', $order->id));
 });

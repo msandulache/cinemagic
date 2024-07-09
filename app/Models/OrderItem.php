@@ -5,14 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CartItem extends Model
+class OrderItem extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
-
-    public function movieHour()
+    public function orderItems()
     {
-        return $this->hasOne(MovieHour::class, 'id', 'movie_hour_id');
+        return $this->hasMany(OrderItem::class);
     }
 }

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CartItem;
 use App\Models\MovieHour;
+use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Price;
 
 class MovieHourController
@@ -18,6 +21,17 @@ class MovieHourController
 
     public function seats(int $movieHourId)
     {
+        $reservedSeats = [];
+        $ticketsInCart = CartItem::where('movie_hour_id', $movieHourId)->get();
+        foreach ($ticketsInCart as $ticket) {
+            $reservedSeats[] = $ticket->seat;
+        }
+
+        $ticketsOrdered = OrderItem::where('movie_hour_id', $movieHourId)->get();
+        foreach ($ticketsOrdered as $ticket) {
+            $reservedSeats[] = $ticket->seat;
+        }
+
         $movieHour= MovieHour::find($movieHourId);
 
         $price = Price::find(date('N'));
@@ -34,6 +48,7 @@ class MovieHourController
                 'seatRows' => $seatRows,
                 'seatColumns' => $seatColumns,
                 'price' => $price,
+                'reservedSeats' => $reservedSeats
             ]
         );
     }

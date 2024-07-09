@@ -31,7 +31,7 @@
                       enctype="multipart/form-data">
                     @csrf
                     <button type="submit">
-                        <i class="fa fa-heart text-purple-700 hover:text-red-600 text-xl"></i>
+                        <i class="fa fa-heart text-red-600 hover:text-red-500 text-xl"></i>
                     </button>
                 </form>
             @endauth

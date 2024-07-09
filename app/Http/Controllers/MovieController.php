@@ -41,6 +41,10 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
+        if($movie->hours()->count() == 0) {
+            abort(404);
+        }
+
         return view(
             'movies/show',
             [
@@ -77,7 +81,8 @@ class MovieController extends Controller
     public function search(Request $request)
     {
         $search = $request->get('search');
-        $movies = Movie::where('title', 'LIKE', '%' . $search . '%')->get();
+        $movies = Movie::where('title', 'LIKE', '%' . $search . '%')
+            ->join('movie_hours', 'movies.id', '=', 'movie_hours.movie_id')->get();
 
         return view('movies/search', [
             'movies' => $movies,

@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Actor;
+use App\Models\Order;
+use App\Models\OrderStatus;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -22,7 +24,10 @@ class DatabaseSeeder extends Seeder
             MovieSeeder::class,
             MovieHourSeeder::class,
             CartSeeder::class,
-            CartItemSeeder::class
+            CartItemSeeder::class,
+            OrderStatusSeeder::class,
+            OrderSeeder::class,
+            OrderItemSeeder::class
         ]);
 
 

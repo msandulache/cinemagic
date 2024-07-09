@@ -20,7 +20,12 @@ class MovieHourFactory extends Factory
     {
         return [
             'movie_id' => Movie::all()->random(1)[0]->id,
-            'hour' => Carbon::create(date('Y') . '-' . $this->faker->date('m-d H:i'))
+            'hour' => Carbon::create(
+                date('Y') . '-' .
+                $this->faker->date('m-d ') .
+                $this->faker->randomElement(['20', '17', '14', '11']) .
+                ':00'
+            )
         ];
     }
 }

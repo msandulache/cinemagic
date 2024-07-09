@@ -48,7 +48,15 @@
 
                                 <x-slot name="content">
                                     <x-dropdown-link :href="route('profile.edit')">
-                                        {{ __('Profile') }}
+                                        {{ __('Contul meu') }}
+                                    </x-dropdown-link>
+
+                                    <x-dropdown-link :href="route('order.mytickets')">
+                                        {{ __('Biletele mele') }}
+                                    </x-dropdown-link>
+
+                                    <x-dropdown-link :href="route('order.history')">
+                                        {{ __('Istoric comenzi') }}
                                     </x-dropdown-link>
 
                                     <!-- Authentication -->
@@ -66,7 +74,7 @@
                         </div>
 
                         <div class="mt-1 mb-4 space-x-2">
-                            <a class="inline-flex items-center text-sm text-purple-400 hover:text-purple-200" href="{{ route('cart.index') }}">
+                            <a class="inline-flex items-center text-sm text-purple-400 hover:text-purple-200" href="{{ route('cart') }}">
                                 <svg width="18" height="17" viewbox="0 0 18 17" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -84,7 +92,7 @@
                                 </svg>
                             </a>
 
-                            <a class="group mr-2 inline-flex items-center text-sm" href="{{ route('favorite.index') }}">
+                            <a class="group mr-2 inline-flex items-center text-sm" href="{{ route('wishlist') }}">
                                 <span class="md:mr-2 text-purple-400">
                                   <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_1208_8162)">
@@ -243,7 +251,7 @@
                             </a>
                         </li>
                         <li class="mb-3">
-                            <a class="group mr-6 inline-flex items-center text-base" href="{{ route('favorite.index') }}">
+                            <a class="group mr-6 inline-flex items-center text-base" href="{{ route('wishlist') }}">
                               <span class="mr-2 text-purple-400">
                                 <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <g clip-path="url(#clip0_1208_8162)">
@@ -257,7 +265,7 @@
                             </a>
                         </li>
                         <li class="mb-12">
-                            <a class="inline-flex items-center text-base text-purple-400 hover:text-purple-200" href="{{ route('cart.index') }}">
+                            <a class="inline-flex items-center text-base text-purple-400 hover:text-purple-200" href="{{ route('cart') }}">
                               <span class="mr-2 text-purple-400">
                                 <svg width="18" height="17" viewbox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <path
