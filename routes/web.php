@@ -25,14 +25,22 @@ Route::middleware('auth')->group(function () {
     Route::delete('favorite-remove/{id}', [Controllers\WishlistController::class, 'favoriteRemove'])->name('favorite.remove');
     Route::get('/wishlist', [Controllers\WishlistController::class, 'index'])->name('wishlist');
 
-    Route::post('cart-add', [Controllers\CartController::class, 'add'])->name('cart.add');
-    Route::delete('cart-remove/{id}', [Controllers\CartController::class, 'remove'])->name('cart.remove');
-    Route::get('/cart', [Controllers\CartController::class, 'index'])->name('cart');
-    Route::delete('cart-empty/{id}', [Controllers\CartController::class, 'empty'])->name('cart.empty');
+    Route::get('/booking', [Controllers\BookingController::class, 'index'])->name('booking');
+    Route::post('booking-add', [Controllers\BookingController::class, 'add'])->name('booking.add');
+    Route::delete('booking-remove/{id}', [Controllers\BookingController::class, 'remove'])->name('booking.remove');
+    Route::delete('booking-empty/{id}', [Controllers\BookingController::class, 'empty'])->name('booking.empty');
+
     Route::get('/my-tickets', [Controllers\OrderController::class, 'myticktes'])->name('order.mytickets');
     Route::get('/orders/history', [Controllers\OrderController::class, 'history'])->name('order.history');
     Route::get('/orders/show/{id}', [Controllers\OrderController::class, 'show'])->name('order.show');
 
+});
+
+
+Route::controller(Controllers\StripePaymentController::class)->group(function(){
+    Route::get('stripe', 'stripe')->name('stripe.index');
+    Route::post('stripe/checkout', 'stripeCheckout')->name('stripe.checkout');
+    Route::get('stripe/checkout/success', 'stripeCheckoutSuccess')->name('stripe.checkout.success');
 });
 
 require __DIR__.'/auth.php';

@@ -1,5 +1,6 @@
 @import "font-awesome/css/font-awesome.css";
 @import "modal-video/css/modal-video.css";
+@import "sweetalert2/dist/sweetalert2.css";
 
 @tailwind base;
 @tailwind components;
@@ -88,4 +89,13 @@
     width: 7rem;
     position: relative;
     bottom: 10px;
+}
+
+.badge {
+    position: absolute;
+    top: 14px;
+    right: 54px;
+    padding: 0px 4px;
+    border-radius: 50%;
+    font-size: 8px;
 }

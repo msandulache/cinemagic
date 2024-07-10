@@ -20,7 +20,7 @@
                     <tbody class="divide-y divide-gray-200">
                     @foreach ($movies as $movie)
                         <tr>
-                            <td class="px-6 py-2 text-sm font-medium text-gray-800 whitespace-nowrap">
+                            <td class="sm:hidden px-6 py-2 text-sm font-medium text-gray-800 whitespace-nowrap">
                                 {{ $loop->index+1 }}
                             </td>
                             <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
@@ -35,13 +35,11 @@
                             </td>
 
                             <td class="px-6 py-2 text-sm font-medium text-right whitespace-nowrap">
-                                <form action="{{ route('favorite.remove',$movie->id) }}" method="POST"
-                                      onsubmit="return confirm('{{ trans('Esti sigur ?') }}');"
-                                      style="display: inline-block;">
+                                <form action="{{ route('favorite.remove',$movie->id) }}" method="POST">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                                    <x-danger-button>{{ __('Sterge') }}</x-danger-button>
+                                    <x-danger-button class="delete-confirmation"><i class="fa fa-trash"></i></x-danger-button>
                                 </form>
                             </td>
                         </tr>

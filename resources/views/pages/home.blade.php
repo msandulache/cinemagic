@@ -10,9 +10,9 @@
                                 <h1 class="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-heading text-white font-semibold mb-8">
                                     {{ __('Bun venit la CineMagic!') }}</h1>
                                 <p class="max-w-sm lg:max-w-md mb-8 text-rhino-300 text-sm lg:text-base">
-                                    {{ __('Aici ai o varietate largă de filme și poți rezerva biletele în câțiva pasi simpli.') }}</p>
+                                    {{ __('Alege din oferta noastra de filme si rezerva, aici, biletele din cativa pasi simpli. Ce film vei alege?') }}</p>
                                 <a class="inline-flex h-12 py-1 px-6 items-center text-center text-sm font-medium text-white rounded-sm bg-purple-500 hover:bg-purple-600 transition duration-200"
-                                   href="{{ route('movies.index') }}">{{ __('Vezi oferta de filme') }}</a>
+                                   href="{{ route('movies.index') }}">{{ __('Vezi oferta noastra de filme') }}</a>
                             </div>
                         </div>
                     </div>
@@ -44,32 +44,32 @@
                         <i class="fa fa-group text-white fa-2x" aria-hidden="true"></i>
                     </div>
                     <p class="text-rhino-700 text-sm font-semibold font-medium text-center mb-2">Scaune Premium</p>
-                    <p class="text-rhino-400 text-sm text-center">Selectați confortul suprem cu scaune premium
+                    <p class="text-rhino-400 text-sm text-center">Alege confortul suprem cu scaune premium
                         ajustabile pentru o vizionare de neuitat.</p>
                 </div>
                 <div class="w-full sm:w-1/2 lg:w-1/4 p-4">
                     <div class="mb-3 mx-auto bg-orange-500 w-12 h-12 rounded-full flex items-center justify-center">
                         <i class="fa fa-ticket text-white fa-2x" aria-hidden="true"></i>
                     </div>
-                    <p class="text-rhino-700 text-sm font-semibold font-medium text-center mb-2">Rezervare Rapidă</p>
-                    <p class="text-rhino-400 text-sm text-center">Procesul nostru optimizat asigură finalizarea
-                        rezervării în doar câteva minute.</p>
+                    <p class="text-rhino-700 text-sm font-semibold font-medium text-center mb-2">Rezervare Rapida</p>
+                    <p class="text-rhino-400 text-sm text-center">Procesul nostru optimizat asigura finalizarea
+                        rezervarii in doar cateva minute.</p>
                 </div>
                 <div class="w-full sm:w-1/2 lg:w-1/4 p-4">
                     <div class="mb-3 mx-auto bg-orange-500 w-12 h-12 rounded-full flex items-center justify-center">
                         <i class="fa fa-gift text-white fa-2x" aria-hidden="true"></i>
                     </div>
                     <p class="text-rhino-700 text-sm font-semibold font-medium text-center mb-2">Oferte Speciale</p>
-                    <p class="text-rhino-400 text-sm text-center">Beneficiați periodic de oferte speciale și reduceri la
+                    <p class="text-rhino-400 text-sm text-center">Beneficiati periodic de oferte speciale si reduceri la
                         cele mai noi filme.</p>
                 </div>
                 <div class="w-full sm:w-1/2 lg:w-1/4 p-4">
                     <div class="mb-3 mx-auto bg-orange-500 w-12 h-12 rounded-full flex items-center justify-center">
                         <i class="fa fa-phone text-white fa-2x" aria-hidden="true"></i>
                     </div>
-                    <p class="text-rhino-700 text-sm font-semibold font-medium text-center mb-2">Suport Clienți</p>
-                    <p class="text-rhino-400 text-sm text-center">Echipa noastră de suport este disponibilă pentru a
-                        răspunde oricăror întrebări legate de bilete.</p>
+                    <p class="text-rhino-700 text-sm font-semibold font-medium text-center mb-2">Suport Clienti</p>
+                    <p class="text-rhino-400 text-sm text-center">Echipa noastra de suport este disponibila pentru a
+                        raspunde oricaror intrebari legate de bilete.</p>
                 </div>
             </div>
         </div>
@@ -90,10 +90,10 @@
                         <div class="mb-12 space-y-7">
                             <h2 class="text-3xl md:text-4xl xl:text-5xl text-rhino-700 font-semibold mb-3 leading-none font-heading">
                                 Cum rezerv online?</h2>
-                            <p class="text-rhino-400 text-lg font-normal">Accesați secțiunea Filme, alegeți filmul și
-                                ora, selectați locurile și finalizați cumpărarea.</p>
-                            <p class="text-rhino-400 text-lg">După finalizarea cumpărării, veți primi biletele pe email
-                                sau le puteți accesa în contul dvs.</p>
+                            <p class="text-rhino-400 text-lg font-normal">Alege un film si acceseaza pagina acestuia, selecteaza
+                                data si ora rularii, apoi locurile dorite din sala si finalizati cumpararea prin plata cu card.</p>
+                            <p class="text-rhino-400 text-lg">După finalizarea cumpararii, vei primi biletele pe email
+                                sau le poti accesa in contul tau la sectiunea 'Biletele mele'.</p>
                         </div>
                     </div>
                 </div>

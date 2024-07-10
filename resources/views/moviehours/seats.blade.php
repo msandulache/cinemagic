@@ -61,16 +61,16 @@
             <div class="container py-10 px-10 mx-0 min-w-full flex flex-col items-center">
 
                 <form
-                    action="{{ route('cart.add') }}" method="POST"
-                    enctype="multipart/form-data" id="add-to-cart-form">
+                    action="{{ route('booking.add') }}" method="POST"
+                    enctype="multipart/form-data" id="add-to-booking-form">
                     @csrf
 
                     <input type="hidden" name="price" value="{{ $price->value }}"/>
                     <input type="hidden" name="movie_hour_id" value="{{ $movieHour['id'] }}"/>
 
                     <button type="submit"
-                            class="bg-purple-500 hover:bg-purple-600 text-white text-sm py-2 px-4 mt-3 rounded">
-                        <i class="fa fa-shopping-cart"></i> Adauga in cos
+                            class="bg-purple-500 hover:bg-purple-600 text-white text-sm py-3 px-10 mt-3 rounded">
+                        <i class="fa fa-ticket"></i> Rezerva
                     </button>
                 </form>
 
@@ -88,11 +88,11 @@
                 input.setAttribute("name", "seats[]");
                 input.setAttribute("value", seat.innerHTML);
                 input.setAttribute("id", 'seat_' + seat.innerHTML);
-                document.getElementById("add-to-cart-form").prepend(input);
+                document.getElementById("add-to-booking-form").prepend(input);
             } else {
                 if (document.getElementById('seat_' + seat.innerHTML)) {
                     var seat = document.getElementById('seat_' + seat.innerHTML);
-                    var form = document.getElementById('add-to-cart-form');
+                    var form = document.getElementById('add-to-booking-form');
                     form.removeChild(seat);
                 }
             }

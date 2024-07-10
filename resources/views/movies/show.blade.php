@@ -54,8 +54,7 @@
                                 <div class="flex -mx-2 flex-wrap mb-10">
                                     <div class="w-full xs:w-5/12 md:w-5/12 px-2 mb-4 xs:mb-0"><button id="buyBtn"
                                             class="block w-full px-3 py-4 rounded-sm text-center text-white text-sm font-medium bg-purple-500 hover:bg-purple-600 transition duration-200 ease-in-out duration-150"
-                                             onclick="if(document.getElementById('showtime').value === '') alert('{{ __('Alege mai intai data si ora filmului') }}'); else window.location.href = '/seats/' + document.getElementById('showtime').value;">
-                                            <i class="fa fa-ticket"></i> {{ __('Cumpara bilete') }}</button></div>
+                                            ><i class="fa fa-ticket"></i> {{ __('Cumpara bilete') }}</button></div>
 
                                     @if(!empty($movie['trailer']))
                                         <div class="w-full xs:w-5/12 md:w-5/12 px-2 mb-4 xs:mb-0">

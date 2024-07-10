@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cart extends Model
+class Booking extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function cartItems()
+    public function bookingItems()
     {
-        return $this->hasMany(CartItem::class);
+        return $this->hasMany(BookingItem::class);
     }
 
     public function users()

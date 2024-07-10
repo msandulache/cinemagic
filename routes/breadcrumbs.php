@@ -66,10 +66,10 @@ Breadcrumbs::for('wishlist', function ($trail) {
 });
 
 
-// Acasa > Contul meu > Cos de cumparaturi
-Breadcrumbs::for('cart', function ($trail) {
+// Acasa > Contul meu > Rezervare bilete
+Breadcrumbs::for('booking', function ($trail) {
     $trail->parent('profile');
-    $trail->push('Cos de cumparaturi', route('cart'));
+    $trail->push('Rezervare bilete', route('booking'));
 });
 
 // Acasa > Contul meu > Istoric comenzi

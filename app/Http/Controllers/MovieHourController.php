@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CartItem;
+use App\Models\BookingItem;
 use App\Models\MovieHour;
-use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Price;
 
@@ -22,8 +21,8 @@ class MovieHourController
     public function seats(int $movieHourId)
     {
         $reservedSeats = [];
-        $ticketsInCart = CartItem::where('movie_hour_id', $movieHourId)->get();
-        foreach ($ticketsInCart as $ticket) {
+        $ticketsBooked = BookingItem::where('movie_hour_id', $movieHourId)->get();
+        foreach ($ticketsBooked as $ticket) {
             $reservedSeats[] = $ticket->seat;
         }
 

@@ -12,7 +12,7 @@
                 </p>
                 <h1 class="font-heading font-semibold text-4xl text-rhino-700 text-center mb-8">{{ __('Istoric comenzi') }}</h1>
 
-                @if(!empty($orders))
+                @if(count($orders) > 0)
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead>
                         <tr class="text-center font-semibold">

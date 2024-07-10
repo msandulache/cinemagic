@@ -2,16 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\Cart;
+use App\Models\Booking;
 use Illuminate\Database\Seeder;
 
-class CartSeeder extends Seeder
+class BookingSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Cart::factory(20)->create();
+        Booking::factory(20)->create();
     }
 }

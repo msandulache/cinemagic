@@ -2,15 +2,15 @@
 
 namespace Database\Factories;
 
-use App\Models\Cart;
+use App\Models\Booking;
 use App\Models\MovieHour;
 use App\Models\Price;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\CartItem>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BookingItem>
  */
-class CartItemFactory extends Factory
+class BookingItemFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -21,7 +21,7 @@ class CartItemFactory extends Factory
     {
 
         return [
-            'cart_id' => Cart::all()->random(1)[0]->id,
+            'booking_id' => Booking::all()->random(1)[0]->id,
             'movie_hour_id' => MovieHour::all()->random(1)[0]->id,
             'seat' => strtoupper($this->faker->randomLetter()) . $this->faker->numberBetween(1, 10),
             'price' => Price::all()->random(1)[0]->value,

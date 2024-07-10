@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
             ActorSeeder::class,
             MovieSeeder::class,
             MovieHourSeeder::class,
-            CartSeeder::class,
-            CartItemSeeder::class,
+            BookingSeeder::class,
+            BookingItemSeeder::class,
             OrderStatusSeeder::class,
             OrderSeeder::class,
             OrderItemSeeder::class
