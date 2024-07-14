@@ -9,5 +9,10 @@ class Genre extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['tmdb_id', 'name'];
+    protected $guarded = [];
+
+    public function movies(): BelongsToMany
+    {
+        return $this->belongsToMany(Movie::class, 'movie_genre');
+    }
 }

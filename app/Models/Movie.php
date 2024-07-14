@@ -21,12 +21,12 @@ class Movie extends Model
 
     public function genres(): BelongsToMany
     {
-        return $this->belongsToMany(Genre::class, 'movie_genre')->withTimestamps();
+        return $this->belongsToMany(Genre::class, 'movie_genre');
     }
 
     public function actors(): BelongsToMany
     {
-        return $this->belongsToMany(Actor::class, 'movie_actor')->withTimestamps();
+        return $this->belongsToMany(Actor::class, 'movie_actor');
     }
 
     public function hours(): HasMany

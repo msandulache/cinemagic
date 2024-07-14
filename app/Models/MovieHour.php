@@ -13,6 +13,6 @@ class MovieHour extends Model
 
     public function movie()
     {
-        return $this->hasOne(Movie::class, 'id', 'movie_id');
+        return $this->belongsTo(Movie::class);
     }
 }

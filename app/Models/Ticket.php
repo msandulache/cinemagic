@@ -5,20 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class Order extends Model
+class Ticket extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function status()
+    public function movieHour(): HasOne
     {
-        return $this->belongsTo(OrderStatus::class, 'order_status_id');
+        return $this->hasOne(MovieHour::class);
     }
 
-    public function user(): BelongsTo
+    public function order(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Order::class);
     }
 }
