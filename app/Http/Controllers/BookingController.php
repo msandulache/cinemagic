@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
-use App\Models\BookingItem;
+use App\Models\Seat;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -26,7 +26,7 @@ class BookingController extends Controller
 
         $bookingItems = [];
         foreach($request->seats as $seat) {
-            $bookingItems[] = new BookingItem([
+            $bookingItems[] = new Seat([
                 'movie_hour_id' => $request->movie_hour_id,
                 'seat' => $seat,
                 'price' => $request->price
@@ -48,7 +48,7 @@ class BookingController extends Controller
 
     public function remove(int $bookingItemId)
     {
-        $bookingItem = BookingItem::find($bookingItemId);
+        $bookingItem = Seat::find($bookingItemId);
         $bookingItem->delete();
 
         session()->flash('success', 'Biletul a fost eliminat din rezervare!');

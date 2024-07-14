@@ -3,35 +3,43 @@
 namespace App\Http\Controllers;
 
 use App\Models\Seat;
+use App\Models\Movie;
 use App\Models\MovieHour;
 use App\Models\Ticket;
 use App\Models\Price;
+use Illuminate\Http\Request;
 
-class MovieHourController
+class CinemaController extends Controller
 {
-    public function index()
+    public function movie(Movie $movie)
     {
-        $movieHours = MovieHour::where('hour', '>=', date('Y-m-d H:i'))
-            ->orderBy('hour', 'ASC')
-            ->get();
+        if($movie->hours()->count() == 0) {
+            abort(404);
+        }
 
-        return view('moviehours/index', ['movieHours' => $movieHours]);
+        return view(
+            'movies/show',
+            [
+                'price' => Price::findOrFail(date('N'))->value,
+                'movie' => $movie
+            ]
+        );
     }
 
-    public function seats(int $movieHourId)
+    public function movieHour(MovieHour $movieHour)
     {
         $reservedSeats = [];
-        $ticketsBooked = Seat::where('movie_hour_id', $movieHourId)->get();
+        $ticketsBooked = Seat::where('movie_hour_id', $movieHour->id)->get();
         foreach ($ticketsBooked as $ticket) {
             $reservedSeats[] = $ticket->seat;
         }
 
-        $ticketsOrdered = Ticket::where('movie_hour_id', $movieHourId)->get();
+        $ticketsOrdered = Ticket::where('movie_hour_id', $movieHour->id)->get();
         foreach ($ticketsOrdered as $ticket) {
             $reservedSeats[] = $ticket->seat;
         }
 
-        $movieHour= MovieHour::find($movieHourId);
+        $movieHour= MovieHour::find($movieHour->id);
 
         $price = Price::find(date('N'));
 
