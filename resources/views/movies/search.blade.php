@@ -5,7 +5,7 @@
     <div class="py-6">
         <div class="container px-4 mx-auto">
             <h3 class="text-2xl text-center font-heading font-semibold text-rhino-600 tracking-xs mb-14 mt-8">
-                {{ __('Rezultate cautare') }}
+                {{ __('Rezultate cautare') }}: {{ $search }}
             </h3>
 
             @if(count($movies) > 0)

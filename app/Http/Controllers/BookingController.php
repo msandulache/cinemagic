@@ -8,66 +8,25 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
-    public function index()
+    public function show()
     {
         $booking = Booking::where('user_id', auth()->user()->id)
         ->where('session_id', session()->getId())
         ->first();
 
-        return view('shop/booking', ['booking' => $booking]);
+        return view('bookings/show', ['booking' => $booking]);
     }
 
-    public function add(Request $request)
+    public function destroy()
     {
-        $booking = Booking::firstOrCreate([
-            'user_id' => auth()->user()->id,
-            'session_id' => session()->getId(),
-        ]);
+        $booking = Booking::where('user_id', auth()->user()->id)
+            ->where('session_id', session()->getId())
+            ->first();
 
-        $bookingItems = [];
-        foreach($request->seats as $seat) {
-            $bookingItems[] = new Seat([
-                'movie_hour_id' => $request->movie_hour_id,
-                'seat' => $seat,
-                'price' => $request->price
-            ]);
-        }
-
-        $booking->bookingItems()->saveMany($bookingItems);
-
-        if($request->seats == 1) {
-            session()->flash('success', 'Biletul a fost rezervat cu succes!');
-        }
-
-        if($request->seats > 1) {
-            session()->flash('success', 'Biletele a fost rezervate cu succes!');
-        }
-
-        return redirect()->route('booking');
-    }
-
-    public function remove(int $bookingItemId)
-    {
-        $bookingItem = Seat::find($bookingItemId);
-        $bookingItem->delete();
-
-        session()->flash('success', 'Biletul a fost eliminat din rezervare!');
-
-        return redirect()->route('booking');
-    }
-
-    public function show()
-    {
-
-    }
-
-    public function empty(int $bookingId)
-    {
-        $booking = Booking::find($bookingId);
         $booking->delete();
 
-        session()->flash('success', 'Cosul de cumparaturi a fost golit cu succes!');
+        session()->flash('success', 'Rezervarea a fost eliminata cu succes!');
 
-        return redirect()->route('booking');
+        return redirect()->route('bookings.show');
     }
 }

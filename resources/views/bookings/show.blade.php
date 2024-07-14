@@ -27,35 +27,35 @@
                         </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
-                        @foreach ($booking->bookingItems as $bookingItem)
+                        @foreach ($booking->seats as $seat)
                             <tr class="text-center">
                                 <td class="px-6 py-2 text-sm font-medium text-gray-800 whitespace-nowrap">
                                     {{ $loop->index+1 }}
                                 </td>
                                 <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
-                                    <img src="{{ $bookingItem->movieHour->movie->poster_path }}"
-                                         alt="{{ $bookingItem->movieHour->movie->title }}" class="w-12 ">
+                                    <img src="{{ $seat->movieHour->movie->poster_path }}"
+                                         alt="{{ $seat->movieHour->movie->title }}" class="w-12 ">
                                 </td>
 
                                 <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap  text-left">
-                                    {{ $bookingItem->movieHour->movie->title }}
+                                    {{ $seat->movieHour->movie->title }}
                                 </td>
 
                                 <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
                                     <div class="sc-ticket">
                                         <div class="sc-ticket-stripes"></div>
-                                        <div class="sc-ticket-seat-label">{{ $bookingItem->seat }}</div>
-                                        <div class="sc-ticket-seat-type">{{ \Carbon\Carbon::parse($bookingItem->movieHour->hour)->format('d.m H:i') }}</div>
+                                        <div class="sc-ticket-seat-label">{{ $seat->seat }}</div>
+                                        <div class="sc-ticket-seat-type">{{ \Carbon\Carbon::parse($seat->movieHour->hour)->format('d.m H:i') }}</div>
                                         <div class="sc-ticket-stripes"></div>
                                     </div>
                                 </td>
 
                                 <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
-                                    {{ $bookingItem->price }} {{ config('app.currency') }}
+                                    {{ $seat->price }} {{ config('app.currency') }}
                                 </td>
 
                                 <td class="px-6 py-2 text-sm font-medium text-right whitespace-nowrap">
-                                    <form action="{{ route('booking.remove',$bookingItem->id) }}" method="POST">
+                                    <form action="{{ route('seats.destroy',$seat->id) }}" method="POST">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <x-danger-button class="delete-confirmation"><i class="fa fa-trash"></i>
@@ -70,7 +70,7 @@
                             </td>
 
                             <td class="text-center px-6 py-8 text-sm text-gray-800 whitespace-nowrap">
-                                {{ $booking->bookingItems->sum('price') }} {{ config('app.currency') }}
+                                {{ $booking->seats->sum('price') }} {{ config('app.currency') }}
                             </td>
 
                             <td class="px-6 py-8 text-sm font-medium text-right whitespace-nowrap">
@@ -81,7 +81,7 @@
                     </table>
             </div>
             <div class="flex justify-end flex-wrap gap-4 py-3">
-                <form action="{{ route('booking.empty',$booking->id) }}" method="POST">
+                <form action="{{ route('bookings.destroy',$booking->id) }}" method="POST">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <button
@@ -90,12 +90,6 @@
 
                 <form action="{{ route('stripe.checkout') }}" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    @foreach ($booking->bookingItems as $bookingItem)
-                        <input type="hidden" name="movie_title[]" value="{{ $bookingItem->movieHour->movie->title }}"/>
-                        <input type="hidden" name="movie_hour[]" value="{{ \Carbon\Carbon::parse($bookingItem->movieHour->hour)->format('d.m H:i') }}"/>
-                        <input type="hidden" name="movie_seat[]" value="{{ $bookingItem->seat }}"/>
-                        <input type="hidden" name="movie_price[]" value="{{ $bookingItem->price }}"/>
-                    @endforeach
                     <button
                         class="bg-purple-500 py-3 px-4 rounded-sm text-white text-center hover:bg-purple-600 transition duration-200">
                         <i class="fa fa-credit-card" aria-hidden="true"></i> {{ __('Plateste') }}

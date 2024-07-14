@@ -8,7 +8,7 @@ Breadcrumbs::for('home', function ($trail) {
 });
 
 // Acasa > Program
-Breadcrumbs::for('movie-hours', function ($trail) {
+Breadcrumbs::for('moviehours', function ($trail) {
     $trail->parent('home');
     $trail->push('Program', route('menu.moviehours'));
 });
@@ -71,7 +71,7 @@ Breadcrumbs::for('favorites', function ($trail) {
 // Acasa > Contul meu > Rezervare bilete
 Breadcrumbs::for('booking', function ($trail) {
     $trail->parent('profile');
-    $trail->push('Rezervare bilete', route('bookings.index'));
+    $trail->push('Rezervare bilete', route('bookings.show'));
 });
 
 // Acasa > Contul meu > Istoric comenzi

@@ -2,42 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
+use App\Models\Order;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class StripePaymentController extends Controller
 {
-    /**
-     * success response method.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function stripe(): View
+    public function checkout()
     {
-        return view('shop.stripe');
-    }
+        $booking = Booking::where('user_id', auth()->user()->id)
+            ->where('session_id', session()->getId())
+            ->first();
 
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function stripeCheckout(Request $request)
-    {
-        $lineItems = [];
-        foreach ($request->input(key: 'movie_title') as $key => $movie_title) {
-            $productDataName = [];
-            $productDataName[] = "Bilet";
-            $productDataName[] = $request->input('movie_hour')[$key];
-            $productDataName[] = $request->input('movie_title')[$key];
-            $productDataName[] = $request->input('movie_seat')[$key];
+        $items = [];
+        foreach ($booking->seats as $seat) {
+            $movieTicketInfo = [];
+            $movieTicketInfo[] = "Bilet";
+            $movieTicketInfo[] = $seat->movieHour->hour;
+            $movieTicketInfo[] = $seat->movieHour->movie->title;
+            $movieTicketInfo[] = $seat->seat;
 
-            $lineItems[] = [
+            $items[] = [
                 'price_data' => [
                     'product_data' => [
-                        'name' => implode(' - ', $productDataName),
+                        'name' => implode(' - ', $movieTicketInfo),
                     ],
-                    'unit_amount' => 100 * $request->input('movie_price')[$key],
+                    'unit_amount' => 100 * $seat->price,
                     'currency' => config('app.currency'),
                 ],
                 'quantity' => 1,
@@ -51,34 +43,42 @@ class StripePaymentController extends Controller
             'success_url' => $redirectUrl,
             'customer_email' => 'mariusssandulache2015@gmail.com',
             'payment_method_types' => ['link', 'card'],
-            'line_items' => $lineItems,
+            'line_items' => $items,
             'mode' => 'payment',
             'allow_promotion_codes' => true,
             'locale' => 'ro'
         ]);
 
-        return redirect($response['url']);
+        if(isset($response['success_url'])) {
+
+            $order = Order::create([
+                'user_id' => auth()->user()->id,
+                'order_status_id' => 1
+            ]);
+
+            foreach ($booking->seats as $seat) {
+                Ticket::create([
+                    'order_id' => $order->id,
+                    'movie_hour_id' => $seat->movieHour->id,
+                    'seat' => $seat->seat,
+                    'price' => $seat->price,
+                ]);
+            }
+
+            $booking->delete();
+        }
+
+        return redirect($response['success_url']);
     }
 
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function stripeCheckoutSuccess(Request $request)
+    public function checkoutSuccess(Request $request)
     {
-        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+//        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+//        $session = $stripe->checkout->sessions->retrieve($request->session_id);
 
-        $session = $stripe->checkout->sessions->retrieve($request->session_id);
-        dd($session);
+        session()->flash('success', 'Yahoo');
 
+        return view('stripe/success');
 
-        //ia datele din cos
-        //scrie comanda
-        //sterge cosul
-
-
-        return redirect()->route('stripe.index')
-            ->with('success', 'Payment successful.');
     }
 }

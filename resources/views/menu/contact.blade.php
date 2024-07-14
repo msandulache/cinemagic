@@ -4,6 +4,13 @@
 
     <section class="overflow-hidden py-12">
         <div class="container mx-auto px-4">
+
+            @if ($message = Session::get('success'))
+                <div class="p-4 mb-3 text-center border border-green-400 bg-green-100 rounded max-w-lg mx-auto">
+                    <p class="text-green-800">{{ $message }}</p>
+                </div>
+            @endif
+
             <div class="bg-purple-100 rounded-lg py-12 px-8 max-w-lg mx-auto">
                 <form method="POST" action="{{ route('menu.contact') }}">
                     @csrf
@@ -21,7 +28,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <x-text-input id="name" class="w-full" type="text" name="phone" :placeholder="__('Telefon')" :value="old('phone')" required autofocus />
+                        <x-text-input id="phone" class="w-full" type="text" name="phone" :placeholder="__('Telefon')" :value="old('phone')" required autofocus />
                         <x-input-error :messages="$errors->get('phone')" class="mt-2" />
                     </div>
 

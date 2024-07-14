@@ -6,7 +6,7 @@ use App\Models\Movie;
 use Illuminate\Http\RedirectResponse;
 use Maize\Markable\Models\Favorite;
 
-class WishlistController extends Controller
+class FavoriteController extends Controller
 {
     public function index()
     {
@@ -14,26 +14,26 @@ class WishlistController extends Controller
             auth()->user()
         )->get();
 
-        return view('profile/wishlist', compact('movies'));
+        return view('favorites/index', compact('movies'));
     }
 
-    public function favoriteAdd($id): RedirectResponse
+    public function store($id): RedirectResponse
     {
         $movie = Movie::find($id);
         $user = auth()->user();
         Favorite::add($movie, $user);
         session()->flash('success', 'Filmul a fost adăugat la Favorite cu succes!');
 
-        return redirect()->route('wishlist');
+        return redirect()->route('favorites.index');
     }
 
-    public function favoriteRemove($id): RedirectResponse
+    public function destroy($id): RedirectResponse
     {
         $movie = Movie::find($id);
         $user = auth()->user();
         Favorite::remove($movie, $user);
         session()->flash('success', 'Filmul este eliminat de la Favorite cu succes!');
 
-        return redirect()->route('wishlist');
+        return redirect()->route('favorites.index');
     }
 }

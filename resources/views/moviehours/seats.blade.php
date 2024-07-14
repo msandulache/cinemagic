@@ -62,7 +62,7 @@
 
                 <form
                     action="{{ route('seats.store') }}" method="POST"
-                    enctype="multipart/form-data" id="add-to-booking-form">
+                    id="add-to-booking-form">
                     @csrf
 
                     <input type="hidden" name="price" value="{{ $price->value }}"/>

@@ -76,7 +76,7 @@
                     </table>
             </div>
             <div class="flex justify-end flex-wrap gap-4 py-3">
-                <form action="{{ route('booking.empty',$booking->id) }}" method="POST"
+                <form action="{{ route('bookings.distroy',$booking->id) }}" method="POST"
                       onsubmit="return confirm('{{ trans('Esti sigur ?') }}');">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

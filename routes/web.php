@@ -7,7 +7,8 @@ Route::name('menu.')->controller(Controllers\MenuController::class)->group(funct
     Route::get('/', 'home')->name('home');
     Route::get('/movies', 'movies')->name('movies');
     Route::get('/moviehours', 'moviehours')->name('moviehours');
-    Route::get('/contact', 'contact')->name('contact');
+    Route::get('/contact', 'contactForm')->name('contact.form');
+    Route::post('/contact', 'contact')->name('contact');
     Route::post('/search', 'search')->name('search');
 });
 
@@ -17,12 +18,6 @@ Route::name('cinema.')->controller(Controllers\CinemaController::class)->group(f
 });
 
 Route::middleware('auth')->group(function () {
-    Route::prefix('admin')->group(function () {
-        Route::resource('actors', Controllers\Admin\ActorController::class);
-        Route::resource('movies', Controllers\Admin\MovieController::class);
-        Route::resource('genres', Controllers\Admin\GenreController::class);
-    });
-
     Route::prefix('profile')->name('profile.')->controller(Controllers\ProfileController::class)->group(function () {
         Route::get('', 'edit')->name('edit');
         Route::patch('', 'update')->name('update');
@@ -41,15 +36,13 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::prefix('seats')->name('seats.')->controller(Controllers\SeatController::class)->group(function () {
-        Route::get('', 'index')->name('index');
         Route::post('', 'store')->name('store');
         Route::delete('/{seat}', 'destroy')->name('destroy');
     });
 
     Route::prefix('stripe')->name('stripe.')->controller(Controllers\StripePaymentController::class)->group(function () {
-        Route::get('', 'stripe')->name('stripe.index');
-        Route::post('/checkout', 'checkout')->name('stripe.checkout');
-        Route::get('/checkout/success', 'checkoutSuccess')->name('stripe.checkout.success');
+        Route::post('/checkout', 'checkout')->name('checkout');
+        Route::get('/checkout/success', 'checkoutSuccess')->name('checkout.success');
     });
 
     Route::prefix('orders')->name('orders.')->controller(Controllers\OrderController::class)->group(function () {
