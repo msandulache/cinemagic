@@ -35,13 +35,14 @@ Route::middleware('auth')->group(function () {
         Route::delete('/{movie}', 'destroy')->name('destroy');
     });
 
-    Route::prefix('booking')->name('bookings.')->controller(Controllers\BookingController::class)->group(function () {
+    Route::prefix('bookings')->name('bookings.')->controller(Controllers\BookingController::class)->group(function () {
         Route::get('', 'show')->name('show');
         Route::delete('', 'destroy')->name('destroy');
     });
 
-    Route::prefix('seat')->name('seats.')->controller(Controllers\SeatController::class)->group(function () {
+    Route::prefix('seats')->name('seats.')->controller(Controllers\SeatController::class)->group(function () {
         Route::get('', 'index')->name('index');
+        Route::post('', 'store')->name('store');
         Route::delete('/{seat}', 'destroy')->name('destroy');
     });
 
@@ -51,12 +52,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/checkout/success', 'checkoutSuccess')->name('stripe.checkout.success');
     });
 
-    Route::prefix('order')->name('orders.')->controller(Controllers\OrderController::class)->group(function () {
+    Route::prefix('orders')->name('orders.')->controller(Controllers\OrderController::class)->group(function () {
         Route::get('/history', 'history')->name('history');
         Route::get('/{order}', 'show')->name('show');
     });
 
-    Route::prefix('ticket')->name('tickets.')->controller(Controllers\TicketController::class)->group(function () {
+    Route::prefix('tickets')->name('tickets.')->controller(Controllers\TicketController::class)->group(function () {
+        Route::get('', 'index')->name('index');
         Route::get('/{ticket}', 'show')->name('show');
     });
 });

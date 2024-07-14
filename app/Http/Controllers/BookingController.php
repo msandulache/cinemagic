@@ -56,6 +56,11 @@ class BookingController extends Controller
         return redirect()->route('booking');
     }
 
+    public function show()
+    {
+
+    }
+
     public function empty(int $bookingId)
     {
         $booking = Booking::find($bookingId);

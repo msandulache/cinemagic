@@ -12,7 +12,7 @@
                                 <p class="max-w-sm lg:max-w-md mb-8 text-rhino-300 text-sm lg:text-base">
                                     {{ __('Alege din oferta noastra de filme si rezerva, aici, biletele din cativa pasi simpli. Ce film vei alege?') }}</p>
                                 <a class="inline-flex h-12 py-1 px-6 items-center text-center text-sm font-medium text-white rounded-sm bg-purple-500 hover:bg-purple-600 transition duration-200"
-                                   href="{{ route('movies.index') }}">{{ __('Vezi oferta noastra de filme') }}</a>
+                                   href="{{ route('menu.movies') }}">{{ __('Vezi oferta noastra de filme') }}</a>
                             </div>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                             <div class="flex flex-wrap -mx-4">
                                 @foreach($premiumMovies as $premiumMovie)
                                     <div class="w-1/3 px-4 group">
-                                        <a href="{{ route('movies.show', ['movie' => $premiumMovie]) }}">
+                                        <a href="{{ route('cinema.movie', ['movie' => $premiumMovie]) }}">
                                             <img class="block rounded-xl w-full group-hover:opacity-75"
                                                  src="{{ $premiumMovie['poster_path'] }}"
                                                  alt="{{ $premiumMovie['title'] }}">

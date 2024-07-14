@@ -45,7 +45,7 @@ $('#buyBtn').on('click', function (e) {
             icon: "info"
         });
     } else {
-        window.location.href = '/seats/' + $('#showtime').val();
+        window.location.href = '/moviehours/' + $('#showtime').val();
     }
 });
 

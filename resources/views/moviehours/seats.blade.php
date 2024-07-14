@@ -61,7 +61,7 @@
             <div class="container py-10 px-10 mx-0 min-w-full flex flex-col items-center">
 
                 <form
-                    action="{{ route('booking.add') }}" method="POST"
+                    action="{{ route('seats.store') }}" method="POST"
                     enctype="multipart/form-data" id="add-to-booking-form">
                     @csrf
 

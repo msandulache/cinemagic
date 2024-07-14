@@ -5,24 +5,26 @@
     <div class="py-6">
         <div class="container px-4 mx-auto">
             <h3 class="text-2xl text-center font-heading font-semibold text-rhino-600 tracking-xs mb-14 mt-8">
-                @if(count($movies) > 1)
-                    {{ __('Am gasit :filme filme dupa cautarea: \':search\'', ['filme' => count($movies), 'search' => $search]) }}
-                @elseif(count($movies) == 1)
-                    {{ __('Am gasit 1 film dupa cautarea: \':search\'', ['search' => $search]) }}
-                @else
-                    {{ __('Ne pare rau, nu am gasit niciun film dupa cautarea: \':search\'', ['search' => $search]) }}
-                @endif
+                {{ __('Rezultate cautare') }}
             </h3>
-            <div class="flex flex-wrap">
 
-                <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                    @foreach($movies as $movie)
-                        @if(!empty($movie->hours) && count($movie->hours) > 0)
-                            @include('partials.movie', ['movie' => $movie])
-                        @endif
-                    @endforeach
+            @if(count($movies) > 0)
+                <div class="flex flex-wrap">
+                    <div
+                        class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                        @foreach($movies as $movie)
+                            @if(!empty($movie->hours) && count($movie->hours) > 0)
+                                @include('partials.movie', ['movie' => $movie])
+                            @endif
+                        @endforeach
+                    </div>
                 </div>
-            </div>
+            @else
+                <div class="text-center font-heading text-rhino-600 tracking-xs mb-14 mt-8">
+                    {{ __('Ne pare rau, nu am gasit filme care sa corespunda cautarii tale') }}
+                </div>
+            @endif
+
         </div>
     </div>
 

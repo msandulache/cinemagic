@@ -51,11 +51,11 @@
                                         {{ __('Contul meu') }}
                                     </x-dropdown-link>
 
-                                    <x-dropdown-link :href="route('order.mytickets')">
+                                    <x-dropdown-link :href="route('tickets.index')">
                                         {{ __('Biletele mele') }}
                                     </x-dropdown-link>
 
-                                    <x-dropdown-link :href="route('order.history')">
+                                    <x-dropdown-link :href="route('orders.history')">
                                         {{ __('Istoric comenzi') }}
                                     </x-dropdown-link>
 
@@ -74,11 +74,11 @@
                         </div>
 
                         <div class="mb-4 space-x-2">
-                            <a class="inline-flex items-center text-sm text-purple-400 hover:text-purple-200" href="{{ route('booking') }}">
+                            <a class="inline-flex items-center text-sm text-purple-400 hover:text-purple-200" href="{{ route('bookings.show') }}">
                                 <i class="fa fa-ticket"></i>
                             </a>
 
-                            <a class="group mr-2 inline-flex items-center text-sm" href="{{ route('wishlist') }}">
+                            <a class="group mr-2 inline-flex items-center text-sm" href="{{ route('favorites.index') }}">
                                 <span class="md:mr-2 text-purple-400">
                                   <i class="fa fa-heart"></i>
                                 </span>
@@ -108,32 +108,32 @@
         <div class="flex h-full -mx-4 items-center justify-between">
             <div class="w-auto sm:w-1/2 xl:w-auto px-4">
                 <div class="flex items-center">
-                    <a class="inline-block mr-12 font-bold h-9" href="{{ route('page.home') }}">
+                    <a class="inline-block mr-12 font-bold h-9" href="{{ route('menu.home') }}">
                         <img class="h-auto logo"
                              src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/logo.png') }}" alt="">
                     </a>
                     <div class="hidden xl:block">
                         <a class="inline-flex mr-10 items-center text-sm font-bold text-rhino-700 hover:text-rhino-400"
-                           href="{{ route('page.home') }}">
+                           href="{{ route('menu.home') }}">
                             <span class="mr-2">{{ __('Acasa') }}</span>
                         </a>
                         <a class="inline-flex mr-10 items-center text-sm font-bold text-rhino-700 hover:text-rhino-400"
-                           href="{{ route('moviehours.index') }}">
+                           href="{{ route('menu.moviehours') }}">
                             <span class="mr-2">{{ __('Program') }}</span>
                         </a>
                         <a class="inline-flex mr-10 items-center text-sm font-bold text-rhino-700 hover:text-rhino-400"
-                           href="{{ route('movies.index') }}">
+                           href="{{ route('menu.movies') }}">
                             <span class="mr-2">{{ __('Filme') }}</span>
                         </a>
                         <a class="inline-flex items-center text-sm font-bold text-rhino-700 hover:text-rhino-400"
-                           href="{{ route('page.contact') }}">{{ __('Contact') }}</a>
+                           href="{{ route('menu.contact') }}">{{ __('Contact') }}</a>
                     </div>
                 </div>
             </div>
             <div class="w-auto sm:w-1/2 xl:w-auto px-4">
                 <div class="flex items-center justify-end">
                     <div class="hidden md:flex items-center px-6 py-1 border border-coolGray-200 rounded-full">
-                        <form method="POST" action="{{ route('movies.search') }}" >
+                        <form method="POST" action="{{ route('menu.search') }}" >
                             @csrf
                             <input
                                 class="h-12 bg-transparent border-0 text-sm text-coolGray-500 placeholder-coolGray-500 outline-none"
@@ -173,7 +173,7 @@
     <div class="navbar-backdrop fixed inset-0 bg-purple-800 opacity-70"></div>
     <nav class="relative flex flex-col pt-12 pb-6 px-8 w-full h-full bg-white overflow-y-auto">
         <div class="flex mb-12 items-center">
-            <a class="inline-block mr-auto" href="{{ route('page.home') }}">
+            <a class="inline-block mr-auto" href="{{ route('menu.home') }}">
                 <img class="h-16" src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/logo.png') }}" alt="">
             </a>
             <a class="navbar-close" href="#">
@@ -230,7 +230,7 @@
                             </a>
                         </li>
                         <li class="mb-3">
-                            <a class="group mr-6 inline-flex items-center text-base" href="{{ route('wishlist') }}">
+                            <a class="group mr-6 inline-flex items-center text-base" href="{{ route('favorites.index') }}">
                               <span class="mr-2 text-purple-400">
                                 <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <g clip-path="url(#clip0_1208_8162)">
@@ -244,7 +244,7 @@
                             </a>
                         </li>
                         <li class="mb-12">
-                            <a class="inline-flex items-center text-base text-purple-400 hover:text-purple-200" href="{{ route('booking') }}">
+                            <a class="inline-flex items-center text-base text-purple-400 hover:text-purple-200" href="{{ route('bookings.show') }}">
                               <span class="mr-2 text-purple-400">
                                 <svg width="18" height="17" viewbox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <path
@@ -264,12 +264,12 @@
                 @endauth
 
                 <li class="mb-4"><a class="flex items-center text-base font-bold text-rhino-700"
-                                    href="{{ route('page.home') }}">{{ __('Acasa') }}</a></li>
-                <li class="mb-4"><a class="flex items-center text-base font-bold text-rhino-700" href="{{ route('moviehours.index') }}">{{ __('Program') }}</a>
+                                    href="{{ route('menu.home') }}">{{ __('Acasa') }}</a></li>
+                <li class="mb-4"><a class="flex items-center text-base font-bold text-rhino-700" href="{{ route('menu.moviehours') }}">{{ __('Program') }}</a>
                 </li>
-                <li class="mb-4"><a class="flex items-center text-base font-bold text-rhino-700" href="{{ route('movies.index') }}">{{ __('Filme') }}</a>
+                <li class="mb-4"><a class="flex items-center text-base font-bold text-rhino-700" href="{{ route('menu.movies') }}">{{ __('Filme') }}</a>
                 </li>
-                <li><a class="flex items-center text-base font-bold text-rhino-700 hover:text-rhino-400" href="{{ route('page.contact') }}">{{ __('Contact') }}</a>
+                <li><a class="flex items-center text-base font-bold text-rhino-700 hover:text-rhino-400" href="{{ route('menu.contact') }}">{{ __('Contact') }}</a>
                 </li>
             </ul>
         </div>

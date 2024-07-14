@@ -107,7 +107,7 @@
                 <h3 class="text-rhino-700 text-center mb-8">{{ __('Cosul de cumparaturi e gol') }}</h3>
                 <div class="flex justify-center flex-wrap gap-4 py-3">
                     <a class="bg-purple-500 py-3 px-4 rounded-sm text-white text-center hover:bg-purple-600 transition duration-200"
-                       href="{{ route('moviehours.index') }}">{{ __('Vezi programul cu filme') }}</a>
+                       href="{{ route('menu.moviehours') }}">{{ __('Vezi programul cu filme') }}</a>
                 </div>
             @endif
         </div>

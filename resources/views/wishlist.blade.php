@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    {{ Breadcrumbs::render('wishlist') }}
+    {{ Breadcrumbs::render('favorites') }}
 
     <section class="overflow-hidden py-12">
         <div class="container mx-auto px-4">
@@ -24,18 +24,18 @@
                                 {{ $loop->index+1 }}
                             </td>
                             <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
-                                <a href="{{ route('movies.show', ['movie' => $movie]) }}">
+                                <a href="{{ route('cinema.movie', ['movie' => $movie]) }}">
                                     <img src="{{ $movie->poster_path }}" alt="{{ $movie->title }}" class="w-12"/>
                                 </a>
                             </td>
                             <td class="px-6 py-2 text-sm text-gray-800 hover:text-purple-700 whitespace-nowrap">
-                                <a href="{{ route('movies.show', ['movie' => $movie]) }}">
+                                <a href="{{ route('cinema.movie', ['movie' => $movie]) }}">
                                     {{ $movie->title }}
                                 </a>
                             </td>
 
                             <td class="px-6 py-2 text-sm font-medium text-right whitespace-nowrap">
-                                <form action="{{ route('favorite.remove',$movie->id) }}" method="POST">
+                                <form action="{{ route('favorites.destroy',$movie) }}" method="POST">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 

@@ -68,7 +68,7 @@
                                     <div class="w-full xs:w-3/12 md:w-2/12 px-2">
 
                                         <form style="height: 51px"
-                                              action="{{ route('favorite.add', $movie['id']) }}" method="POST"
+                                              action="{{ route('favorites.store', $movie) }}" method="POST"
                                               enctype="multipart/form-data">
                                             @csrf
 

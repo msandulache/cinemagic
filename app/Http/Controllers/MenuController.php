@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Movie;
 use App\Models\MovieHour;
 
-class PageController extends Controller
+class MenuController extends Controller
 {
     public function home()
     {

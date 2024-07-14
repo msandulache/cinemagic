@@ -40,7 +40,7 @@ Breadcrumbs::for('movie', function ($trail, $movie) {
 // Acasa > Filme > [Film] > [Program]
 Breadcrumbs::for('seats', function ($trail, $movieHour) {
     $trail->parent('movie', $movieHour->movie);
-    $trail->push(Carbon::createFromFormat('d.m H:i', $movieHour->hour), route('cinema.moviehour', $movieHour));
+    $trail->push(Carbon::parse($movieHour->hour)->format('d.m H:i'), route('cinema.moviehour', $movieHour));
 });
 
 // Acasa > Intra in cont
