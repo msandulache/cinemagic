@@ -1,44 +1,46 @@
 <?php
 
 // Acasa
+use Carbon\Carbon;
+
 Breadcrumbs::for('home', function ($trail) {
-    $trail->push('Acasa', route('page.home'));
+    $trail->push('Acasa', route('menu.home'));
 });
 
 // Acasa > Program
-Breadcrumbs::for('moviehours', function ($trail) {
+Breadcrumbs::for('movie-hours', function ($trail) {
     $trail->parent('home');
-    $trail->push('Program', route('moviehours.index'));
+    $trail->push('Program', route('menu.moviehours'));
 });
 
 // Acasa > Filme
 Breadcrumbs::for('movies', function ($trail) {
     $trail->parent('home');
-    $trail->push('Filme', route('movies.index'));
+    $trail->push('Filme', route('menu.movies'));
 });
 
 // Acasa > Contact
 Breadcrumbs::for('contact', function ($trail) {
     $trail->parent('home');
-    $trail->push('Contact', route('page.contact'));
+    $trail->push('Contact', route('menu.contact'));
 });
 
 // Acasa > Cautare filme
 Breadcrumbs::for('search', function ($trail) {
     $trail->parent('home');
-    $trail->push('Cautare filme', route('movies.search'));
+    $trail->push('Cautare filme', route('menu.search'));
 });
 
 // Acasa > Filme > [Film]
 Breadcrumbs::for('movie', function ($trail, $movie) {
     $trail->parent('movies');
-    $trail->push($movie->title, route('movies.show', $movie->id));
+    $trail->push($movie->title, route('cinema.movie', $movie));
 });
 
-// Acasa > Filme > [Film] > [Program] > Locuri
+// Acasa > Filme > [Film] > [Program]
 Breadcrumbs::for('seats', function ($trail, $movieHour) {
     $trail->parent('movie', $movieHour->movie);
-    $trail->push(date('d.m H:i', strtotime($movieHour->hour)), route('moviehours.seats', $movieHour->id));
+    $trail->push(Carbon::createFromFormat('d.m H:i', $movieHour->hour), route('cinema.moviehour', $movieHour));
 });
 
 // Acasa > Intra in cont
@@ -60,26 +62,26 @@ Breadcrumbs::for('profile', function ($trail) {
 });
 
 // Acasa > Contul meu > Wishlist
-Breadcrumbs::for('wishlist', function ($trail) {
+Breadcrumbs::for('favorites', function ($trail) {
     $trail->parent('profile');
-    $trail->push('Lista de dorinte', route('wishlist'));
+    $trail->push('Lista de dorinte', route('favorites.index'));
 });
 
 
 // Acasa > Contul meu > Rezervare bilete
 Breadcrumbs::for('booking', function ($trail) {
     $trail->parent('profile');
-    $trail->push('Rezervare bilete', route('booking'));
+    $trail->push('Rezervare bilete', route('bookings.index'));
 });
 
 // Acasa > Contul meu > Istoric comenzi
 Breadcrumbs::for('order-history', function ($trail) {
     $trail->parent('profile');
-    $trail->push('Istoric comenzi', route('order.history'));
+    $trail->push('Istoric comenzi', route('orders.history'));
 });
 
 // Acasa > Contul meu > Istoric comenzi > [Comanda]
-Breadcrumbs::for('order-items', function ($trail, $order) {
+Breadcrumbs::for('order', function ($trail, $order) {
     $trail->parent('order-history');
-    $trail->push('Detalii comanda: #' . $order->id, route('order.items', $order->id));
+    $trail->push('Detalii comanda: #' . $order->id, route('order.show', $order));
 });

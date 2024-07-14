@@ -3,44 +3,62 @@
 use App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [Controllers\PageController::class, 'home'])->name('page.home');
-Route::get('/contact', [Controllers\PageController::class, 'contact'])->name('page.contact');
+Route::name('menu.')->controller(Controllers\MenuController::class)->group(function () {
+    Route::get('/', 'home')->name('home');
+    Route::get('/movies', 'movies')->name('movies');
+    Route::get('/moviehours', 'moviehours')->name('moviehours');
+    Route::get('/contact', 'contact')->name('contact');
+    Route::post('/search', 'search')->name('search');
+});
 
-Route::resource('/movies', Controllers\MovieController::class);
-Route::post('/search', [Controllers\MovieController::class, 'search'])->name('movies.search');
-Route::get('/moviehours', [Controllers\MovieHourController::class, 'index'])->name('moviehours.index');
-Route::get('/seats/{id}', [Controllers\MovieHourController::class, 'seats'])->name('moviehours.seats');
+Route::name('cinema.')->controller(Controllers\CinemaController::class)->group(function () {
+    Route::get('/movies/{movie}', 'movie')->name('movie');
+    Route::get('/moviehours/{movieHour}', 'movieHour')->name('moviehour');
+});
 
 Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::resource('actors', Controllers\ActorController::class);
-        Route::resource('genres', Controllers\GenreController::class);
+        Route::resource('actors', Controllers\Admin\ActorController::class);
+        Route::resource('movies', Controllers\Admin\MovieController::class);
+        Route::resource('genres', Controllers\Admin\GenreController::class);
     });
 
-    Route::get('/profile', [Controllers\ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [Controllers\ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [Controllers\ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::prefix('profile')->name('profile.')->controller(Controllers\ProfileController::class)->group(function () {
+        Route::get('', 'edit')->name('edit');
+        Route::patch('', 'update')->name('update');
+        Route::delete('', 'destroy')->name('destroy');
+    });
 
-    Route::post('favorite-add/{id}', [Controllers\WishlistController::class, 'favoriteAdd'])->name('favorite.add');
-    Route::delete('favorite-remove/{id}', [Controllers\WishlistController::class, 'favoriteRemove'])->name('favorite.remove');
-    Route::get('/wishlist', [Controllers\WishlistController::class, 'index'])->name('wishlist');
+    Route::prefix('favorites')->name('favorites.')->controller(Controllers\FavoriteController::class)->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::post('/{movie}', 'store')->name('store');
+        Route::delete('/{movie}', 'destroy')->name('destroy');
+    });
 
-    Route::get('/booking', [Controllers\BookingController::class, 'index'])->name('booking');
-    Route::post('booking-add', [Controllers\BookingController::class, 'add'])->name('booking.add');
-    Route::delete('booking-remove/{id}', [Controllers\BookingController::class, 'remove'])->name('booking.remove');
-    Route::delete('booking-empty/{id}', [Controllers\BookingController::class, 'empty'])->name('booking.empty');
+    Route::prefix('booking')->name('bookings.')->controller(Controllers\BookingController::class)->group(function () {
+        Route::get('', 'show')->name('show');
+        Route::delete('', 'destroy')->name('destroy');
+    });
 
-    Route::get('/my-tickets', [Controllers\OrderController::class, 'myticktes'])->name('order.mytickets');
-    Route::get('/orders/history', [Controllers\OrderController::class, 'history'])->name('order.history');
-    Route::get('/orders/show/{id}', [Controllers\OrderController::class, 'show'])->name('order.show');
+    Route::prefix('seat')->name('seats.')->controller(Controllers\SeatController::class)->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::delete('/{seat}', 'destroy')->name('destroy');
+    });
 
-});
+    Route::prefix('stripe')->name('stripe.')->controller(Controllers\StripePaymentController::class)->group(function () {
+        Route::get('', 'stripe')->name('stripe.index');
+        Route::post('/checkout', 'checkout')->name('stripe.checkout');
+        Route::get('/checkout/success', 'checkoutSuccess')->name('stripe.checkout.success');
+    });
 
+    Route::prefix('order')->name('orders.')->controller(Controllers\OrderController::class)->group(function () {
+        Route::get('/history', 'history')->name('history');
+        Route::get('/{order}', 'show')->name('show');
+    });
 
-Route::controller(Controllers\StripePaymentController::class)->group(function(){
-    Route::get('stripe', 'stripe')->name('stripe.index');
-    Route::post('stripe/checkout', 'stripeCheckout')->name('stripe.checkout');
-    Route::get('stripe/checkout/success', 'stripeCheckoutSuccess')->name('stripe.checkout.success');
+    Route::prefix('ticket')->name('tickets.')->controller(Controllers\TicketController::class)->group(function () {
+        Route::get('/{ticket}', 'show')->name('show');
+    });
 });
 
 require __DIR__.'/auth.php';
