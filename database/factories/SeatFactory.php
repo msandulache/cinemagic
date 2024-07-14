@@ -8,9 +8,9 @@ use App\Models\Price;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\OrderItem>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Seat>
  */
-class OrderItemFactory extends Factory
+class SeatFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,8 +19,9 @@ class OrderItemFactory extends Factory
      */
     public function definition(): array
     {
+
         return [
-            'order_id' => Booking::all()->random(1)[0]->id,
+            'booking_id' => Booking::all()->random(1)[0]->id,
             'movie_hour_id' => MovieHour::all()->random(1)[0]->id,
             'seat' => strtoupper($this->faker->randomLetter()) . $this->faker->numberBetween(1, 10),
             'price' => Price::all()->random(1)[0]->value,

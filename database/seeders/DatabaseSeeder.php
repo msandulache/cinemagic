@@ -24,10 +24,10 @@ class DatabaseSeeder extends Seeder
             MovieSeeder::class,
             MovieHourSeeder::class,
             BookingSeeder::class,
-            BookingItemSeeder::class,
+            SeatSeeder::class,
             OrderStatusSeeder::class,
             OrderSeeder::class,
-            OrderItemSeeder::class
+            TicketSeeder::class
         ]);
 
 

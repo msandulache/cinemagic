@@ -2,16 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\OrderItem;
+use App\Models\Booking;
+use App\Models\Seat;
 use Illuminate\Database\Seeder;
 
-class OrderItemSeeder extends Seeder
+class SeatSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        OrderItem::factory(50)->create();
+        Seat::factory(20)->create();
     }
 }

@@ -2,17 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\Booking;
-use App\Models\BookingItem;
+use App\Models\Ticket;
 use Illuminate\Database\Seeder;
 
-class BookingItemSeeder extends Seeder
+class TicketSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        BookingItem::factory(20)->create();
+        Ticket::factory(50)->create();
     }
 }

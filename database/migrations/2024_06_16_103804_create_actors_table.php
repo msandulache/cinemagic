@@ -24,7 +24,6 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Movie::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Actor::class)->constrained()->cascadeOnDelete();
-            $table->timestamps();
         });
     }
 
