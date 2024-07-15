@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Invoice;
 use App\Models\Order;
 use App\Models\Ticket;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -19,8 +20,8 @@ class InvoiceItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'order_id' => Order::all()->random()[0]->id,
-            'ticket_id' => Ticket::all()->random()[0]->id,
+            'invoice_id' => Invoice::all()->random(1)[0]->id,
+            'ticket_id' => Ticket::all()->random(1)[0]->id,
         ];
     }
 }

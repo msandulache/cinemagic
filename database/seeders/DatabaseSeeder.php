@@ -27,7 +27,9 @@ class DatabaseSeeder extends Seeder
             SeatSeeder::class,
             OrderStatusSeeder::class,
             OrderSeeder::class,
-            TicketSeeder::class
+            TicketSeeder::class,
+            InvoiceSeeder::class,
+            InvoiceItemSeeder::class
         ]);
 
 

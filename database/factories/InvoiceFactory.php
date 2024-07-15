@@ -1,4 +1,3 @@
-
 <?php
 
 namespace Database\Factories;
@@ -24,7 +23,7 @@ class InvoiceFactory extends Factory
             'date' => $this->faker->date,
             'due_date' => $this->faker->date,
             'billing_customer' => $this->faker->name(),
-            'billing_email' => $this->faker->unique()->safeEmail(),,
+            'billing_email' => $this->faker->unique()->safeEmail(),
             'billing_phone' => $this->faker->phoneNumber(),
             'billing_address' => $this->faker->address(),
             'billing_city' => $this->faker->city(),

@@ -25,7 +25,6 @@ class TicketFactory extends Factory
             'movie_hour_id' => MovieHour::all()->random(1)[0]->id,
             'seat' => strtoupper($this->faker->randomLetter()) . $this->faker->numberBetween(1, 10),
             'price' => Price::all()->random(1)[0]->value,
-            'qrcode' => base64_encode(QrCode::format('svg')->size(200)->errorCorrection('H')->generate('string')),
         ];
     }
 }
