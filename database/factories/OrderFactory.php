@@ -20,11 +20,11 @@ class OrderFactory extends Factory
     {
         return [
             'user_id' => User::all()->random(1)[0]->id,
-            'customer_name' => $this->faker->name(),
-            'customer_email' => $this->faker->unique()->safeEmail(),
-            'customer_phone' => $this->faker->phoneNumber(),
-            'customer_address' => $this->faker->address(),
-            'customer_city' => $this->faker->city(),
+            'billing_customer' => $this->faker->name(),
+            'billing_email' => $this->faker->unique()->safeEmail(),
+            'billing_phone' => $this->faker->phoneNumber(),
+            'billing_address' => $this->faker->address(),
+            'billing_city' => $this->faker->city(),
             'order_status_id' => OrderStatus::all()->random(1)[0]->id,
         ];
     }

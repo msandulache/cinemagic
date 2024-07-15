@@ -15,6 +15,9 @@
                         </div>
                         <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
                             <h2 class="font-heading text-rhino-800 text-2xl font-semibold">ID comanda: {{ $order->id }}</h2>
+                            <div class="flex flex-wrap gap-2">
+                                <a class="py-2 px-4 bg-purple-500 rounded-sm text-center text-sm text-white font-medium hover:bg-purple-600 transition duration-200" href="{{  }}">Track order</a></div>
+
                         </div>
                         <div class="flex flex-wrap items-center gap-6">
                             <p class="text-rhino-400 text-sm">

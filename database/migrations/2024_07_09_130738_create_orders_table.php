@@ -16,6 +16,11 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
+            $table->string('billing_customer');
+            $table->string('billing_email');
+            $table->string('billing_phone');
+            $table->string('billing_address');
+            $table->string('billing_city');
             $table->foreignIdFor(OrderStatus::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
