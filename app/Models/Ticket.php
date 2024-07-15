@@ -13,9 +13,9 @@ class Ticket extends Model
 
     protected $guarded = [];
 
-    public function movieHour(): HasOne
+    public function movieHour(): BelongsTo
     {
-        return $this->hasOne(MovieHour::class);
+        return $this->belongsTo(MovieHour::class);
     }
 
     public function order(): BelongsTo

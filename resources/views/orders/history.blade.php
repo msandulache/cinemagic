@@ -2,66 +2,59 @@
 
     {{ Breadcrumbs::render('order-history') }}
 
-    <section class="overflow-hidden py-12">
-        <div class="container mx-auto px-4">
-
-            <div class="bg-purple-100 rounded-lg py-12 px-8 mx-auto">
-
-                <p class="uppercase text-rhino-300 hover:text-rhino-400 text-xs font-bold tracking-widest mb-1 text-center">
-                    <a href="{{ route('profile.edit') }}">{{ __('Contul meu') }}</a>
-                </p>
-                <h1 class="font-heading font-semibold text-4xl text-rhino-700 text-center mb-8">{{ __('Istoric comenzi') }}</h1>
-
-                @if(count($orders) > 0)
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead>
-                        <tr class="text-center font-semibold">
-                            <td class="px-6 py-2 text-sm font-medium text-gray-800 whitespace-nowrap">ID</td>
-                            <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">Nume beneficiar</td>
-                            <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">E-mail</td>
-                            <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">Telefon</td>
-                            <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">Bilete</td>
-                            <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">Status</td>
-                        </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-200">
-                        @foreach ($orders as $order)
-                            <tr class="text-center">
-                                <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
-                                    {{ $loop->index+1 }}
-                                </td>
-
-                                <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
-                                    {{ $order->customer_name }}
-                                </td>
-
-                                <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
-                                    {{ $order->customer_email }}
-                                </td>
-
-                                <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
-                                    {{ $order->customer_phone }}
-                                </td>
-
-                                <td class="px-6 py-2 text-sm hover:text-gray-800 text-indigo-500 whitespace-nowrap">
-                                    <a href="{{ route('order.show', $order->id) }}">Vezi bilete</a>
-                                </td>
-
-                                <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
-                                    {{ $order->status->name }}
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-            </div>
-            @else
-                <h3 class="text-rhino-700 text-center mb-8">{{ __('Nu ai inca comenzi. Intra pe program si vezi oferta noastra') }}</h3>
-                <div class="flex justify-center flex-wrap gap-4 py-3">
-                    <a class="bg-purple-500 py-3 px-4 rounded-sm text-white text-center hover:bg-purple-600 transition duration-200"
-                       href="{{ route('menu.moviehours') }}">{{ __('Vezi programul cu filme') }}</a>
+    <section class="py-12">
+        <div class="container px-4 mx-auto">
+            <p class="text-rhino-300 text-center text-xs font-bold tracking-widest uppercase">{{ __('Comenzi recente') }}</p>
+            <h1 class="font-heading text-rhino-700 text-center text-4xl font-semibold mb-12">{{ __('Istoric comenzi') }}</h1>
+            @forelse($orders as $order)
+                <div class="bg-white border border-coolGray-200 rounded-xl shadow-md mb-6">
+                    <div class="p-6 border-b border-gray-100">
+                        <div
+                            class="mb-4 inline-block py-1 px-3 rounded-xl bg-orange-100 uppercase text-orange-500 text-xs font-bold tracking-widest">
+                            {{ $order->status->name }}
+                        </div>
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                            <h2 class="font-heading text-rhino-800 text-2xl font-semibold">ID comanda: {{ $order->id }}</h2>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-6">
+                            <p class="text-rhino-400 text-sm">
+                                <span>Total:</span>
+                                <span></span>
+                                <span class="text-rhino-700">{{ $order->tickets->sum('price') }} {{ config('app.currency') }}</span>
+                            </p>
+                        </div>
+                    </div>
+                    @forelse($order->tickets as $ticket)
+                        <div class="p-6 border-b border-gray-100">
+                            <div class="flex items-center flex-wrap -mx-6">
+                                <div class="w-full md:w-auto px-4 mb-6 md:mb-0">
+                                    <div class="bg-gray-100 w-20 h-20 rounded-lg flex items-center justify-center">
+                                        <img src="{{ $ticket->movieHour->movie->poster_path }}" alt="{{ $ticket->movieHour->movie->title }}">
+                                    </div>
+                                </div>
+                                <div class="w-full md:w-2/3 xl:w-5/6 px-4 flex-grow">
+                                    <div class="flex flex-col xs:flex-row flex-wrap xs:items-center justify-between gap-4 mb-2">
+                                        <h2 class="text-rhino-800 font-semibold">{{ $ticket->movieHour->movie->title }}</h2>
+                                        <p class="text-rhino-500 font-semibold">{{ $ticket->price }} {{ config('app.currency') }}</p>
+                                    </div>
+                                    <div class="flex flex-col xs:flex-row flex-wrap xs:items-center justify-between gap-4">
+                                        <div class="flex flex-wrap items-center gap-3">
+                                            <p class="text-rhino-300 text-sm">{{ Carbon\Carbon::parse($ticket->movieHour->hour)->format('d.m H:i') }}</p>
+                                            <div class="w-px h-3 bg-rhino-200"></div>
+                                            <p class="text-rhino-300 text-sm">{{ $ticket->seat }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                        Nu sunt bilete ha ha ha
+                    @endforelse
                 </div>
-            @endif
+                @empty
+                    Ciu ciu comenzi ..ia si comanda bre..
+            @endforelse
         </div>
     </section>
+
 </x-app-layout>

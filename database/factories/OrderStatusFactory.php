@@ -17,7 +17,8 @@ class OrderStatusFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => ucfirst($this->faker->word())
+            'name' => $this->faker->randomElement(['Pending', 'Completed', 'Cancelled', 'Refunded']),
+            'color' => $this->faker->randomElement(['orange-100', 'green-100'])
         ];
     }
 }

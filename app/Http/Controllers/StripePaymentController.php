@@ -76,8 +76,6 @@ class StripePaymentController extends Controller
 //        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
 //        $session = $stripe->checkout->sessions->retrieve($request->session_id);
 
-        session()->flash('success', 'Yahoo');
-
         return view('stripe/success');
 
     }
