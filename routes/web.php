@@ -54,6 +54,10 @@ Route::middleware('auth')->group(function () {
         Route::get('', 'index')->name('index');
         Route::get('/{ticket}', 'show')->name('show');
     });
+
+    Route::prefix('invoices')->name('invoices.')->controller(Controllers\InvoiceController::class)->group(function () {
+        Route::get('/{invoice}', 'show')->name('show');
+    });
 });
 
 require __DIR__.'/auth.php';
