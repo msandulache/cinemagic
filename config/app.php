@@ -123,6 +123,12 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
-    'currency' => env('DEFAULT_CURRENCY')
+    'currency' => env('DEFAULT_CURRENCY'),
+
+    'cinema' => [
+        'name' => env('CINEMA_NAME', ''),
+        'phone' => env('CINEMA_PHONE', ''),
+        'email' => env('CINEMA_EMAIL', ''),
+    ],
 
 ];

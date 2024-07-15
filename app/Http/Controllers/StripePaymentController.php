@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use App\Models\Order;
 use App\Models\Ticket;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class StripePaymentController extends Controller
 {
@@ -46,14 +45,14 @@ class StripePaymentController extends Controller
             'line_items' => $items,
             'mode' => 'payment',
             'allow_promotion_codes' => true,
-            'locale' => 'ro'
+            'locale' => 'ro',
         ]);
 
-        if(isset($response['success_url'])) {
+        if (isset($response['success_url'])) {
 
             $order = Order::create([
                 'user_id' => auth()->user()->id,
-                'order_status_id' => 1
+                'order_status_id' => 1,
             ]);
 
             foreach ($booking->seats as $seat) {
@@ -61,6 +60,7 @@ class StripePaymentController extends Controller
                     'order_id' => $order->id,
                     'movie_hour_id' => $seat->movieHour->id,
                     'seat' => $seat->seat,
+                    'qrcode' => base64_encode(QrCode::format('svg')->size(200)->errorCorrection('H')->generate('string')),
                     'price' => $seat->price,
                 ]);
             }
@@ -71,7 +71,7 @@ class StripePaymentController extends Controller
         return redirect($response['success_url']);
     }
 
-    public function checkoutSuccess(Request $request)
+    public function checkoutSuccess()
     {
 //        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
 //        $session = $stripe->checkout->sessions->retrieve($request->session_id);
