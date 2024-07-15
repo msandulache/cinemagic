@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignIdFor(MovieHour::class)->constrained()->cascadeOnDelete();
             $table->char('seat', 3);
             $table->float('price');
+            $table->text('qrcode');
             $table->timestamps();
         });
     }
