@@ -56,6 +56,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::prefix('invoices')->name('invoices.')->controller(Controllers\InvoiceController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
         Route::get('/{invoice}', 'show')->name('show');
     });
 });
