@@ -85,3 +85,9 @@ Breadcrumbs::for('order', function ($trail, $order) {
     $trail->parent('order-history');
     $trail->push('Detalii comanda: #' . $order->id, route('order.show', $order));
 });
+
+// Acasa > Contul meu > Biletele mele
+Breadcrumbs::for('my-tickets', function ($trail) {
+    $trail->parent('profile');
+    $trail->push('Biletele mele', route('tickets.index'));
+});

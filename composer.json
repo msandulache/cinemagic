@@ -12,14 +12,12 @@
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
         "laraveldaily/laravel-invoices": "^4.0",
-        "livewire/livewire": "^3.5",
         "maize-tech/laravel-markable": "^2.2",
         "sentry/sentry": "^4.8",
         "simplesoftwareio/simple-qrcode": "^4.2",
         "stripe/stripe-php": "^15.1"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.13",
         "fakerphp/faker": "^1.23",
         "friendsofphp/php-cs-fixer": "^3.59",
         "laravel/breeze": "^2.0",

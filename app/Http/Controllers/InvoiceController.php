@@ -19,6 +19,18 @@ class InvoiceController extends Controller
 
     public function show(InvoiceModel $invoice)
     {
+        $invoicePdf = $this->create($invoice);
+        return $invoicePdf->stream();
+    }
+
+    public function download(InvoiceModel $invoice)
+    {
+        $invoicePdf = $this->create($invoice);
+        return $invoicePdf->download();
+    }
+
+    private function create($invoice)
+    {
         $customer = new Party([
             'name' => $invoice->billing_customer,
             'address' => $invoice->billing_address . ', ' . $invoice->billing_city,
@@ -36,7 +48,7 @@ class InvoiceController extends Controller
             $items[] = InvoiceItem::make($invoiceItemName)->pricePerUnit($invoiceItem->ticket->price)->quantity(1);
         };
 
-        $invoice = Invoice::make('Factura')
+        $invoicePdf = Invoice::make('Factura')
             ->status(__('Platit'))
             ->sequence($invoice->id)
             ->buyer($customer)
@@ -47,6 +59,6 @@ class InvoiceController extends Controller
             // You can additionally save generated invoice to configured disk
             ->save('public');
 
-        return $invoice->stream();
+        return $invoicePdf;
     }
 }
